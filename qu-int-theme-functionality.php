@@ -16,7 +16,7 @@
  * Plugin Name:       qu-int Theme Functionality
  * Plugin URI:        https://github.com/fanfarian/qu-int-Theme-Functionality
  * Description:       Functionality-Plugin mit wichtigen Einstellungen & Custom Posts für qu-int.Themes
- * Version:           2.0.0
+ * Version:           2.1.0
  * Author:            Stefan Reichert
  * Author URI:        http://qu-int.com/koepfe/stefan-reichert
  * License:           GPL-2.0+
@@ -28,6 +28,25 @@
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
+}
+
+include_once( 'github-plugin-updater/updater.php' );
+
+if ( is_admin() ) {
+    $config = array(
+        'slug'                  => plugin_basename( __FILE__ ),
+        'proper_folder_name'    => 'qu-int-theme-functionality',
+        'api_url'               => 'https://api.github.com/repos/fanfarian/qu-int-Theme-Functionality',
+        'raw_url'               => 'https://raw.github.com/fanfarian/qu-int-Theme-Functionality/master',
+        'github_url'            => 'https://github.com/fanfarian/qu-int-Theme-Functionality',
+        'zip_url'               => 'https://github.com/fanfarian/qu-int-Theme-Functionality/zipball/master',
+        'sslverify'             => true,
+        'requires'              => '4.0',
+        'tested'                => '4.3.1',
+        'readme'                => 'README.txt',
+        'access_token'          => ''
+    );
+    new WP_GitHub_Updater( $config );
 }
 
 /**
