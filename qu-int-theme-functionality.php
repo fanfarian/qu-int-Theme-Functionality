@@ -16,7 +16,7 @@
  * Plugin Name:       qu-int Theme Functionality
  * Plugin URI:        https://github.com/fanfarian/qu-int-Theme-Functionality
  * Description:       Functionality-Plugin mit wichtigen Einstellungen & Custom Posts für qu-int.Themes
- * Version:           2.1.0
+ * Version:           2.1.1
  * Author:            Stefan Reichert
  * Author URI:        http://qu-int.com/koepfe/stefan-reichert
  * License:           GPL-2.0+

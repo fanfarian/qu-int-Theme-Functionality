@@ -38,6 +38,9 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Changelog ==
 
+= 2.1.1 =
+* GitHub Updater Test
+
 = 2.1 =
 * Updates via GitHub Updater from 'radishconcepts'
 
