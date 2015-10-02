@@ -30,25 +30,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-require_once plugin_dir_path( __FILE__ ) . 'github-plugin-updater/updater.php' );
-
-if ( is_admin() ) {
-    $config = array(
-        'slug'                  => plugin_basename( __FILE__ ),
-        'proper_folder_name'    => 'qu-int-theme-functionality',
-        'api_url'               => 'https://api.github.com/repos/fanfarian/qu-int-Theme-Functionality',
-        'raw_url'               => 'https://raw.github.com/fanfarian/qu-int-Theme-Functionality/master',
-        'github_url'            => 'https://github.com/fanfarian/qu-int-Theme-Functionality',
-        'zip_url'               => 'https://github.com/fanfarian/qu-int-Theme-Functionality/zipball/master',
-        'sslverify'             => true,
-        'requires'              => '4.0',
-        'tested'                => '4.3.1',
-        'readme'                => 'README.txt',
-        'access_token'          => ''
-    );
-    new WP_GitHub_Updater( $config );
-}
-
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-qu-int-theme-functionality-activator.php
