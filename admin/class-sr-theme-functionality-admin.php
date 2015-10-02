@@ -74,7 +74,8 @@ class sr_theme_functionality_Admin {
 
 	
 	/**
-     * Allow upload of svg and fonts
+     * 1. Allow upload of svg and font files
+     * Add mime types for 'svg', 'ttf', 'otf', 'woff', 'woff2', 'eot' to media uploader
      *
      * @since  1.0.0
      * @access public
@@ -84,14 +85,18 @@ class sr_theme_functionality_Admin {
 		$mimes['svg'] 	= 'image/svg+xml';
 		$mimes['ttf'] 	= 'font/ttf';
 		$mimes['otf'] 	= 'font/otf';
-		$mimes['woff2'] = 'font/woff2';
 		$mimes['woff'] 	= 'font/woff';
+		$mimes['woff2'] = 'font/woff2';
 		$mimes['eot'] 	= 'font/eot';
 		return $mimes;
 	}
 
 	/**
-     * Add oEmbedded Class for Responsive iFrame Videos from Youtube/Vimeo
+	 * 2. Embed Video iframes responsively
+     * Add oEmbedded class for responsive iFrame Videos from Youtube/Vimeo.
+     * You need to add custom css for .embed-container from http://embedresponsively.com/
+     * .embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } 
+     * .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
      *
      * @since  1.0.0
      * @access public
@@ -105,23 +110,8 @@ class sr_theme_functionality_Admin {
 	}
 	
 	/**
-     * Add custom CSS for admin
-     *
-     * @since  1.0.0
-     * @access public
-     * @return void
-     */
-	public function admin_styling() {
-		
-		$admin_css_path = get_stylesheet_directory_uri().'/css/admin.css';
-		
-		if($this->web_url_exists($admin_css_path)){
-			wp_enqueue_style( 'css-admin', $admin_css_path );
-		}
-	}
-
-	/**
-     * Remove Admin bar for normal users
+	 * 3. Remove admin bar 
+     * Removes the Admin bar on front end for users without role 'edit_posts'
      *
      * @since  1.0.0
      * @access public
@@ -134,7 +124,9 @@ class sr_theme_functionality_Admin {
 	}
 	
 	/**
-     * Remove Admin navigation items
+	 * 4. Remove admin navigation items
+     * Remove 'Comment' navigation link for users without role 'moderate_comments'
+	 * Remove 'Tools' navigation link for users without role 'manage_options'
      *
      * @since  1.0.0
      * @access public
@@ -145,14 +137,17 @@ class sr_theme_functionality_Admin {
 		global $menu;  
 	    global $submenu;
 		    
-	    if (!current_user_can('update_core')) {
+	    if (!current_user_can('moderate_comments')) {
 	    	remove_menu_page('edit-comments.php'); 																												// Remove the comments menu
+		}
+	    if (!current_user_can('manage_options')) {
 			remove_menu_page('tools.php'); 																														// Remove the tools menu
 		}
 	}
 	
 	/**
-     * Show update notification only to admins
+	 * 5. Update notification for Administrators
+     * Show update notification only to admins to prevent user confusion 
      *
      * @since  1.0.0
      * @access public
@@ -166,25 +161,46 @@ class sr_theme_functionality_Admin {
 	}
 
 	/**
-     * Displaying a Quick Performance Report for Admins 
+	 * 6. Quick Performance Report
+     * Display a quick performance report for admins as HTML comment at the bottom of the page
      *
      * @since  1.0.0
      * @access public
      * @return void
      */	
 	public function footer_performance() {
-	    $stat = sprintf( '%d queries in %.3f seconds, using %.2fMB memory',
-	        get_num_queries(),
-	        timer_stop( 0, 3 ),
-	        memory_get_peak_usage() / 1024 / 1024
-	    );
-	    if( current_user_can( 'update_core' ) ) {
+		if( current_user_can( 'update_core' ) ) {
+		    $stat = sprintf( '%d queries in %.3f seconds, using %.2fMB memory',
+		        get_num_queries(),
+		        timer_stop( 0, 3 ),
+		        memory_get_peak_usage() / 1024 / 1024
+		    );
+	    
 	        echo "<!-- {$stat} -->";
 	    }
 	}
 	
 	/**
-     * Remove injected CSS from gallery
+     * 7. Add custom CSS for Administrators
+     * Checks if file exists in 'theme-folder/css/admin.css' and enqueues file automatically
+     *
+     * @since  1.0.0
+     * @access public
+     * @return void
+     */
+	public function admin_styling() {
+		
+		$admin_css_path = get_stylesheet_directory_uri().'/css/admin.css';
+		
+		if($this->web_url_exists($admin_css_path)){
+			wp_enqueue_style( 'css-admin', $admin_css_path );
+		}
+	}
+	
+	
+	/**
+     * 8. Remove inline css style from gallery
+     * You need to style your gallery through your own css files
      *
      * @since  1.0.0
      * @access public
@@ -195,19 +211,48 @@ class sr_theme_functionality_Admin {
 	}
 	
 	/**
-     *  Clean the output of attributes of images in editor. Courtesy of SitePoint. http://www.sitepoint.com/wordpress-change-img-tag-html/
+     * 9. Clean the output of attributes of images in editor. 
+     * Courtesy of SitePoint. http://www.sitepoint.com/wordpress-change-img-tag-html/
      *
      * @since  1.0.0
      * @access public
      * @return string return custom output for inserted images in posts
      */
-	public function image_tag_class($class, $id, $align, $size) {
+	public function image_tag_align_class($class, $id, $align, $size) {
 		$align = 'align' . esc_attr($align);
 		return $align;
 	}
 	
 	/**
-     * Redirect Attachment Pages (mostly images) to their parent page
+     * 10. Remove width and height in editor, for a better responsive world. 
+     * Also sets 'alt' = 'titel' if no alt tag provided for the image
+     *
+     * @since  2.2.0
+     * @access public
+     * @return string return custom output for inserted images in posts
+     */
+	public function image_tag_responsive($html, $id, $alt, $title) {
+		
+		if(empty($alt)){
+			$alt = $title;
+		}
+		
+		return preg_replace(array(
+				'/\s+width="\d+"/i',
+				'/\s+height="\d+"/i',
+				'/alt=""/i'
+			),
+			array(
+				'',
+				'',
+				'',
+				'alt="' . $alt . '"'
+			),
+			$html);
+	}
+	
+	/**
+     * 11. Redirect Attachment Pages (mostly images) to their parent page if available
      *
      * @since  1.0.0
      * @access public
@@ -224,7 +269,7 @@ class sr_theme_functionality_Admin {
 	            exit;
 	        }
 	
-	        $wp_query->set_404();
+			// $wp_query->set_404();
 	        return;
 	    }
 	}

@@ -152,16 +152,17 @@ class sr_theme_functionality {
 
 		$plugin_admin = new sr_theme_functionality_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'upload_mimes', 			$plugin_admin, 'add_mimes' );																		// Allow upload of svg and fonts
-		$this->loader->add_action( 'embed_oembed_html', 	$plugin_admin, 'oembed_filter' );																	// Add oEmbedded Class for Responsive iFrame Videos from Youtube/Vimeo
-		$this->loader->add_action( 'set_current_user', 		$plugin_admin, 'remove_admin_bar' );																// Remove Admin bar for normal users
-		$this->loader->add_action( 'admin_menu', 			$plugin_admin, 'remove_menus' );																	// Remove Admin navigation items
-		$this->loader->add_action( 'admin_notices', 		$plugin_admin, 'hide_update_notice', 1 );															// Show update notification only to admins
-		$this->loader->add_action( 'wp_footer', 			$plugin_admin, 'footer_performance' );																// Displaying a Quick Performance Report for Admins
-		$this->loader->add_action( 'admin_init', 			$plugin_admin, 'admin_styling' );																	// Add custom CSS for admin
-		$this->loader->add_action( 'gallery_style', 		$plugin_admin, 'gallery_style' );																	// Remove injected CSS from gallery
-		$this->loader->add_action( 'get_image_tag_class', 	$plugin_admin, 'image_tag_class', 0 );																// Clean the output of attributes of images in editor
-		$this->loader->add_action( 'template_redirect', 	$plugin_admin, 'template_redirect', 999 );															// Redirect Attachment Pages (mostly images) to their parent page
+		$this->loader->add_action( 'upload_mimes', 			$plugin_admin, 'add_mimes' );																		// 1. Allow upload of svg and font files
+		$this->loader->add_action( 'embed_oembed_html', 	$plugin_admin, 'oembed_filter' );																	// 2. Embed Video iframes responsively
+		$this->loader->add_action( 'set_current_user', 		$plugin_admin, 'remove_admin_bar' );																// 3. Remove admin bar
+		$this->loader->add_action( 'admin_menu', 			$plugin_admin, 'remove_menus' );																	// 4. Remove admin navigation items
+		$this->loader->add_action( 'admin_notices', 		$plugin_admin, 'hide_update_notice', 1 );															// 5. Update notification for Administrators
+		$this->loader->add_action( 'wp_footer', 			$plugin_admin, 'footer_performance' );																// 6. Quick Performance Report
+		$this->loader->add_action( 'admin_init', 			$plugin_admin, 'admin_styling' );																	// 7. Add custom CSS for Administrators
+		$this->loader->add_action( 'gallery_style', 		$plugin_admin, 'gallery_style' );																	// 8. Remove inline css style from gallery
+		$this->loader->add_action( 'get_image_tag_class', 	$plugin_admin, 'image_tag_align_class', 0 );														// 9. Clean the output of attributes of images in editor
+		$this->loader->add_action( 'get_image_tag', 		$plugin_admin, 'image_tag_responsive', 0 );															// 10. Remove width and height in editor
+		$this->loader->add_action( 'template_redirect', 	$plugin_admin, 'template_redirect', 999 );															// 11. Redirect Attachment Pages (mostly images) to their parent page
 	}
 
 	/**
@@ -175,8 +176,8 @@ class sr_theme_functionality {
 
 		$plugin_public = new sr_theme_functionality_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'init', $plugin_public, 'clean_up' );																						// Remove WP generated content from the head
-		$this->loader->add_action( 'wp_head', $plugin_public, 'meta_icons' );																					// Add various favicons and logos for iOS, Android, Windows
+		$this->loader->add_action( 'init', $plugin_public, 'clean_up' );																						// 12. Remove WP generated content from the head
+		$this->loader->add_action( 'wp_head', $plugin_public, 'meta_icons' );																					// 13. Add various favicons and logos for iOS, Android, Windows
 
 	}
 

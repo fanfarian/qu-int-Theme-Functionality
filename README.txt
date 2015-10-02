@@ -1,42 +1,156 @@
-=== Plugin Name ===
-Requires at least: 3.0.1
+=== Theme Functionality ===
+Contributors: Stefan Reichert
+Tags: theme functionality, add mime-types, resonsive videos, performance report, admin css, clean header, favicons
+Requires at least: 3.6.0
 Tested up to: 4.3
 Stable tag: 2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Functionality-Plugin mit wichtigen Einstellungen, erweiterungen und fixes für qu-int.Themes
+Functionality plugin with important settings, enhancements and fixes for WordPress themes
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+= Featured Functions =
+1. Allow upload of svg and font files
+2. Embed Video iframes responsively
+3. Remove admin bar
+4. Remove admin navigation items
+5. Update notification for Administrators
+6. Quick Performance Report
+7. Add custom CSS for Administrators
+8. Remove inline css style from gallery
+9. Clean the output of attributes of images in editor
+10. Remove width and height in editor
+11. Redirect Attachment Pages (mostly images) to their parent page
+12. Remove WP generated content from the head
+13. Add various favicons and logos for iOS, Android, Windows
 
+
+= 1. Allow upload of svg and font files =
+Add mime types for 'svg', 'ttf', 'otf', 'woff', 'woff2', 'eot' to media uploader
+
+
+= 2. Embed Video iframes responsively = 
+Add oEmbedded class for responsive iFrame Videos from Youtube/Vimeo.
+You need to add custom css for .embed-container from http://embedresponsively.com/
+.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } 
+.embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+
+= 3. Remove admin bar = 
+Removes the Admin bar on front end for users without role 'edit_posts'
+
+
+= 4. Remove admin navigation items =
+Remove 'Comment' navigation link for users without role 'moderate_comments'
+Remove 'Tools' navigation link for users without role 'manage_options'
+
+
+= 5. Update notification for Administrators = 
+Show update notification only to admins to prevent user confusion 
+
+
+= 6. Quick Performance Report =
+Display a quick performance report for admins as HTML comment at the bottom of the page
+
+
+= 7. Add custom CSS for Administrators =
+Checks if file exists in (child) 'theme-folder/css/admin.css' and enqueues file automatically
+
+
+= 8. Remove inline css style from gallery =
+You need to style your gallery through your own css files
+
+
+= 9. Clean the output of attributes of images in editor = 
+Better align classes: alignright. alignleft, aligncenter
+
+
+= 10. Remove width and height in editor =
+Better responsive images
+Also sets 'alt' = 'titel' if no alt tag provided for the image
+Check if RICG Plugin makes this obsolete
+
+
+= 11. Redirect Attachment Pages (mostly images) to their parent page  =
+Only if parent is available
+
+
+= 12. Remove WP generated content from the head =
+* Category feeds
+* Post and comment feeds
+* EditURI link
+* Windows live writer
+* Index link
+* Previous link
+* Start link
+* Links for adjacent posts
+* WP version
+* Shortlink
+* Canonical links
+* Remove comment cookie
+* Remove WP version from RSS
+* Remove WP version from css + scripts
+* Remove pesky injected css for recent comments widget
+* Clean up comment styles in the head
+* Remove emojicons
+* WPML information
+* WPML CSS
+* WPML JavaSript
+
+-> v3 options page to decide which content is removed
+
+
+= 13. Add various favicons and logos = 
+Checks if the following file exist in the (child) theme-folder
+* touch-icon-192x192.png (192x192)
+* apple-touch-icon-180x180-precomposed.png (180x180)
+* apple-touch-icon-152x152-precomposed.png (152x152)
+* apple-touch-icon-120x120-precomposed.png (120x120)
+* apple-touch-icon-76x76-precomposed.png (76x76)
+* apple-touch-icon-precomposed.png (57x57)
+* favicon.ico (16x16 + 32x32)
+* browserconfig.xml 
+
+browserconfig.xml needs the following files
+* tile.png (558x558)
+* tile-wide.png (558x270)
+
+Also generates tags for application names on mobile
+* <meta name="apple-mobile-web-app-title" content="'.get_bloginfo('name').'">
+* <meta name="application-name" content="'.get_bloginfo('name').'">'; 
+
+
+= Website =
+https://github.com/fanfarian/sr-theme-functionality
 
 
 == Installation ==
 
 This section describes how to install the plugin and get it working.
 
-1. Upload `qu-int-theme-functionality.php` to the `/wp-content/plugins/` directory
+1. Upload 'sr-theme-functionality.php' to the '/wp-content/plugins/'' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Let the magic happen...
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
-
-An answer to that question.
+= Q. I have a question =
+A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-functionality/issues
 
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
 
 == Changelog ==
+
+= 2.2.1 =
+* Better Readme
+
+= 2.2.0 =
+* New name: sr-theme-functionality
+* Update script 'GitHub Updater' from 'radishconcepts' removed
 
 = 2.1.2 =
 * GitHub Updater Test
@@ -47,22 +161,8 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 = 2.0 =
 * Custom Posts/Taxonomy in separates Plugin abgespalten
 
-
 = 1.0 =
 * First Version
 * Hosted on GitHub
 * Plugin Boilerplate template
-
-
-== Upgrade Notice ==
-
-= 2.1 =
-https://github.com/radishconcepts/WordPress-GitHub-Plugin-Updater
-
-= 2.0 =
-Zur besseren Verwaltung wurden die Theme/Kundesnpezifischen Inhalte für Custom Posts in ein eigenes Plugin abgespalten
-
-= 1.0 =
-Initial Commit to GitHub and changed to Plugin Boilerplate
-
 

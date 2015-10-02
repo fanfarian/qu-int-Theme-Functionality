@@ -73,7 +73,7 @@ class sr_theme_functionality_Public {
 	}
 	
 	/**
-     * Remove WP generated content from the head
+     * 12. Remove WP generated content from the head
      *
      * @since  1.0.0
      * @access private
@@ -81,37 +81,36 @@ class sr_theme_functionality_Public {
      */
 	public function clean_up() {
 
-		remove_action( 'wp_head', 'feed_links_extra', 3 );																										// category feeds
-		remove_action( 'wp_head', 'feed_links', 2 );																											// post and comment feeds
+		remove_action( 'wp_head', 'feed_links_extra', 3 );																										// Category feeds
+		remove_action( 'wp_head', 'feed_links', 2 );																											// Post and comment feeds
 		remove_action( 'wp_head', 'rsd_link' );																													// EditURI link
-		remove_action( 'wp_head', 'wlwmanifest_link' );																											// windows live writer
-		remove_action( 'wp_head', 'index_rel_link' );																											// index link
-		remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );																								// previous link
-		remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );																								// start link
-		remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );																					// links for adjacent posts
+		remove_action( 'wp_head', 'wlwmanifest_link' );																											// Windows live writer
+		remove_action( 'wp_head', 'index_rel_link' );																											// Index link
+		remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );																								// Previous link
+		remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );																								// Start link
+		remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );																					// Links for adjacent posts
 		remove_action( 'wp_head', 'wp_generator' );																												// WP version
 		remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );																								// Shortlink
 		remove_action( 'wp_head', 'rel_canonical');																												// Canonical links
 		remove_action( 'set_comment_cookies', 'wp_set_comment_cookies');																						// Remove comment cookie
+			    
+	    add_filter( 'the_generator', '__return_false');																											// Remove WP version from RSS
+		add_filter( 'style_loader_src',  array( $this, 'remove_wp_ver_css_js'), 9999 );																			// Remove WP version from css
+		add_filter( 'script_loader_src',  array( $this, 'remove_wp_ver_css_js'), 9999 );																		// Remove WP version from scripts
+	    add_filter( 'wp_head',  array( $this, 'remove_wp_widget_recent_comments_style'), 1 );																	// Remove pesky injected css for recent comments widget
+	    add_action( 'wp_head',  array( $this, 'remove_recent_comments_style'), 1 );																				// Clean up comment styles in the head
+		add_action( 'wp_head',  array( $this, 'remove_emojicons'), 1 );																							// Remove emojicons
 
 		// Remove some WPML stuff
 		if ( function_exists('icl_object_id') ) {																												// WPML exists
 			global $sitepress;
 
-			remove_action( 'wp_head', array($sitepress, 'meta_generator_tag'));																					// WPML Infos aus <head> entfernen
-			remove_action( 'wp_head', array($sitepress, 'head_langs'));																							// WPML Infos aus <head> entfernen
+			remove_action( 'wp_head', array($sitepress, 'meta_generator_tag'));																					// WPML information 
+			remove_action( 'wp_head', array($sitepress, 'head_langs'));																							// WPML information
 		
-			define( 'ICL_DONT_LOAD_LANGUAGE_SELECTOR_CSS', true);																								// WPML CSS aus <head> entfernen
-			define( 'ICL_DONT_LOAD_LANGUAGES_JS', true);																										// WPML JS aus <head> entfernen
+			define( 'ICL_DONT_LOAD_LANGUAGE_SELECTOR_CSS', true);																								// WPML CSS
+			define( 'ICL_DONT_LOAD_LANGUAGES_JS', true);																										// WPML JavaSript
 		}
-			    
-	    add_filter( 'the_generator', '__return_false');																											// remove WP version from RSS
-		add_filter( 'style_loader_src',  array( $this, 'remove_wp_ver_css_js'), 9999 );																			// remove WP version from css + scripts
-		add_filter( 'script_loader_src',  array( $this, 'remove_wp_ver_css_js'), 9999 );																		// remove WP version from css + scripts
-	    add_filter( 'wp_head',  array( $this, 'remove_wp_widget_recent_comments_style'), 1 );																	// remove pesky injected css for recent comments widget
-	    add_action( 'wp_head',  array( $this, 'remove_recent_comments_style'), 1 );																				// clean up comment styles in the head
-		add_action( 'wp_head',  array( $this, 'remove_emojicons'), 1 );																							// Remove Emoji-Stuff
-	    
 	}
 	
 	/**
@@ -238,7 +237,6 @@ class sr_theme_functionality_Public {
 			';
 		}
 	}
-
 
 
 	/**
