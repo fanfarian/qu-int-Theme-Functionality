@@ -3,11 +3,11 @@
 /**
  * Register all actions and filters for the plugin
  *
- * @link       http://qu-int.com/koepfe/stefan-reichert
+ * @link       http://stefan-reichert.com
  * @since      1.0.0
  *
- * @package    Qu_Int_Theme_Functionality
- * @subpackage Qu_Int_Theme_Functionality/includes
+ * @package    sr_theme_functionality
+ * @subpackage sr_theme_functionality/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Qu_Int_Theme_Functionality
- * @subpackage Qu_Int_Theme_Functionality/includes
+ * @package    sr_theme_functionality
+ * @subpackage sr_theme_functionality/includes
  * @author     Stefan Reichert <reichert@qu-int.com>
  */
-class Qu_Int_Theme_Functionality_Loader {
+class sr_theme_functionality_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

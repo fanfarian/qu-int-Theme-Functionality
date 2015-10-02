@@ -3,11 +3,11 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @link       http://qu-int.com/koepfe/stefan-reichert
+ * @link       http://stefan-reichert.com
  * @since      1.0.0
  *
- * @package    Qu_Int_Theme_Functionality
- * @subpackage Qu_Int_Theme_Functionality/public
+ * @package    sr_theme_functionality
+ * @subpackage sr_theme_functionality/public
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Qu_Int_Theme_Functionality
- * @subpackage Qu_Int_Theme_Functionality/public
+ * @package    sr_theme_functionality
+ * @subpackage sr_theme_functionality/public
  * @author     Stefan Reichert <reichert@qu-int.com>
  */
-class Qu_Int_Theme_Functionality_Public {
+class sr_theme_functionality_Public {
 
 	/**
 	 * The ID of this plugin.
@@ -252,15 +252,15 @@ class Qu_Int_Theme_Functionality_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Qu_Int_Theme_Functionality_Loader as all of the hooks are defined
+		 * defined in sr_theme_functionality_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Qu_Int_Theme_Functionality_Loader will then create the relationship
+		 * The sr_theme_functionality_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/qu-int-theme-functionality-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/sr-theme-functionality-public.css', array(), $this->version, 'all' );
 
 	}
 
@@ -275,15 +275,15 @@ class Qu_Int_Theme_Functionality_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Qu_Int_Theme_Functionality_Loader as all of the hooks are defined
+		 * defined in sr_theme_functionality_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Qu_Int_Theme_Functionality_Loader will then create the relationship
+		 * The sr_theme_functionality_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/qu-int-theme-functionality-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/sr-theme-functionality-public.js', array( 'jquery' ), $this->version, false );
 
 	}
 

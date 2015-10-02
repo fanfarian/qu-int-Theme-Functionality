@@ -6,11 +6,11 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       http://qu-int.com/koepfe/stefan-reichert
+ * @link       http://stefan-reichert.com
  * @since      1.0.0
  *
- * @package    Qu_Int_Theme_Functionality
- * @subpackage Qu_Int_Theme_Functionality/includes
+ * @package    sr_theme_functionality
+ * @subpackage sr_theme_functionality/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Qu_Int_Theme_Functionality
- * @subpackage Qu_Int_Theme_Functionality/includes
+ * @package    sr_theme_functionality
+ * @subpackage sr_theme_functionality/includes
  * @author     Stefan Reichert <reichert@qu-int.com>
  */
-class Qu_Int_Theme_Functionality_i18n {
+class sr_theme_functionality_i18n {
 
 	/**
 	 * The domain specified for this plugin.

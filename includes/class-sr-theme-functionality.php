@@ -6,11 +6,11 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       http://qu-int.com/koepfe/stefan-reichert
+ * @link       http://stefan-reichert.com
  * @since      1.0.0
  *
- * @package    Qu_Int_Theme_Functionality
- * @subpackage Qu_Int_Theme_Functionality/includes
+ * @package    sr_theme_functionality
+ * @subpackage sr_theme_functionality/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Qu_Int_Theme_Functionality
- * @subpackage Qu_Int_Theme_Functionality/includes
+ * @package    sr_theme_functionality
+ * @subpackage sr_theme_functionality/includes
  * @author     Stefan Reichert <reichert@qu-int.com>
  */
-class Qu_Int_Theme_Functionality {
+class sr_theme_functionality {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +35,7 @@ class Qu_Int_Theme_Functionality {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Qu_Int_Theme_Functionality_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      sr_theme_functionality_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -68,7 +68,7 @@ class Qu_Int_Theme_Functionality {
 	 */
 	public function __construct() {
 
-		$this->plugin_name = 'qu-int-theme-functionality';
+		$this->plugin_name = 'sr-theme-functionality';
 		$this->version = '1.0.0';
 
 		$this->load_dependencies();
@@ -82,10 +82,10 @@ class Qu_Int_Theme_Functionality {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Qu_Int_Theme_Functionality_Loader. Orchestrates the hooks of the plugin.
-	 * - Qu_Int_Theme_Functionality_i18n. Defines internationalization functionality.
-	 * - Qu_Int_Theme_Functionality_Admin. Defines all hooks for the admin area.
-	 * - Qu_Int_Theme_Functionality_Public. Defines all hooks for the public side of the site.
+	 * - sr_theme_functionality_Loader. Orchestrates the hooks of the plugin.
+	 * - sr_theme_functionality_i18n. Defines internationalization functionality.
+	 * - sr_theme_functionality_Admin. Defines all hooks for the admin area.
+	 * - sr_theme_functionality_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -99,34 +99,34 @@ class Qu_Int_Theme_Functionality {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-qu-int-theme-functionality-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-sr-theme-functionality-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-qu-int-theme-functionality-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-sr-theme-functionality-i18n.php';
 
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-qu-int-theme-functionality-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-sr-theme-functionality-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-qu-int-theme-functionality-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-sr-theme-functionality-public.php';
 
-		$this->loader = new Qu_Int_Theme_Functionality_Loader();
+		$this->loader = new sr_theme_functionality_Loader();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Qu_Int_Theme_Functionality_i18n class in order to set the domain and to register the hook
+	 * Uses the sr_theme_functionality_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -134,7 +134,7 @@ class Qu_Int_Theme_Functionality {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Qu_Int_Theme_Functionality_i18n();
+		$plugin_i18n = new sr_theme_functionality_i18n();
 		$plugin_i18n->set_domain( $this->get_plugin_name() );
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
@@ -150,7 +150,7 @@ class Qu_Int_Theme_Functionality {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Qu_Int_Theme_Functionality_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new sr_theme_functionality_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'upload_mimes', 			$plugin_admin, 'add_mimes' );																		// Allow upload of svg and fonts
 		$this->loader->add_action( 'embed_oembed_html', 	$plugin_admin, 'oembed_filter' );																	// Add oEmbedded Class for Responsive iFrame Videos from Youtube/Vimeo
@@ -159,7 +159,6 @@ class Qu_Int_Theme_Functionality {
 		$this->loader->add_action( 'admin_notices', 		$plugin_admin, 'hide_update_notice', 1 );															// Show update notification only to admins
 		$this->loader->add_action( 'wp_footer', 			$plugin_admin, 'footer_performance' );																// Displaying a Quick Performance Report for Admins
 		$this->loader->add_action( 'admin_init', 			$plugin_admin, 'admin_styling' );																	// Add custom CSS for admin
-		$this->loader->add_action( 'login_enqueue_scripts', $plugin_admin, 'login_logo', 999 );																	// Insert Login Logo
 		$this->loader->add_action( 'gallery_style', 		$plugin_admin, 'gallery_style' );																	// Remove injected CSS from gallery
 		$this->loader->add_action( 'get_image_tag_class', 	$plugin_admin, 'image_tag_class', 0 );																// Clean the output of attributes of images in editor
 		$this->loader->add_action( 'template_redirect', 	$plugin_admin, 'template_redirect', 999 );															// Redirect Attachment Pages (mostly images) to their parent page
@@ -174,7 +173,7 @@ class Qu_Int_Theme_Functionality {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Qu_Int_Theme_Functionality_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new sr_theme_functionality_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'init', $plugin_public, 'clean_up' );																						// Remove WP generated content from the head
 		$this->loader->add_action( 'wp_head', $plugin_public, 'meta_icons' );																					// Add various favicons and logos for iOS, Android, Windows
@@ -205,7 +204,7 @@ class Qu_Int_Theme_Functionality {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Qu_Int_Theme_Functionality_Loader    Orchestrates the hooks of the plugin.
+	 * @return    sr_theme_functionality_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;
