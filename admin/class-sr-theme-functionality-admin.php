@@ -3,11 +3,11 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       http://qu-int.com/koepfe/stefan-reichert
+ * @link       http://stefan-reichert.com
  * @since      1.0.0
  *
- * @package    Qu_Int_Theme_Functionality
- * @subpackage Qu_Int_Theme_Functionality/admin
+ * @package    sr_theme_functionality
+ * @subpackage sr_theme_functionality/admin
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Qu_Int_Theme_Functionality
- * @subpackage Qu_Int_Theme_Functionality/admin
+ * @package    sr_theme_functionality
+ * @subpackage sr_theme_functionality/admin
  * @author     Stefan Reichert <reichert@qu-int.com>
  */
-class Qu_Int_Theme_Functionality_Admin {
+class sr_theme_functionality_Admin {
 
 	/**
 	 * The ID of this plugin.
@@ -105,31 +105,6 @@ class Qu_Int_Theme_Functionality_Admin {
 	}
 	
 	/**
-     * Insert Login Logo
-     *
-     * @since  1.0.0
-     * @access public
-     * @return void
-     */
-	public function login_logo() { 
-		
-		$login_image_path = get_stylesheet_directory_uri().'/img/login_logo.png';																				// Login Logo
-		
-		if($this->web_url_exists($login_image_path)){																											// Check File exist
-			
-			echo '<style type="text/css">
-		        body.login div#login h1 a {
-		            background-image: url('.$login_image_path.');
-		            background-size: auto;
-		            width: 320px !important;
-		            height: 180px !important;
-		            padding-bottom: 20px;
-		        }
-		   </style>';
-		}
-	}
-	
-	/**
      * Add custom CSS for admin
      *
      * @since  1.0.0
@@ -141,7 +116,7 @@ class Qu_Int_Theme_Functionality_Admin {
 		$admin_css_path = get_stylesheet_directory_uri().'/css/admin.css';
 		
 		if($this->web_url_exists($admin_css_path)){
-			wp_enqueue_style( 'qtf-admin', $admin_css_path );
+			wp_enqueue_style( 'css-admin', $admin_css_path );
 		}
 	}
 
@@ -266,15 +241,15 @@ class Qu_Int_Theme_Functionality_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Qu_Int_Theme_Functionality_Loader as all of the hooks are defined
+		 * defined in sr_theme_functionality_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Qu_Int_Theme_Functionality_Loader will then create the relationship
+		 * The sr_theme_functionality_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/qu-int-theme-functionality-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/sr-theme-functionality-admin.css', array(), $this->version, 'all' );
 
 	}
 
@@ -289,15 +264,15 @@ class Qu_Int_Theme_Functionality_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Qu_Int_Theme_Functionality_Loader as all of the hooks are defined
+		 * defined in sr_theme_functionality_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Qu_Int_Theme_Functionality_Loader will then create the relationship
+		 * The sr_theme_functionality_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/qu-int-theme-functionality-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/sr-theme-functionality-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 

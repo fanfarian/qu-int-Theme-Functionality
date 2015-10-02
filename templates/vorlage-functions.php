@@ -1,35 +1,28 @@
 <?php
-
 	
 // Enqueue CSS + JS
 /*########################################################################################################################################################################################*/
-if( ! function_exists( 'qwp_enqueue_style' )) {
-	function qwp_enqueue_style()
+if( ! function_exists( 'sr_enqueue_style' )) {
+	function sr_enqueue_style()
 	{
 		# CSS Stylesheet -> Child
-		wp_register_style( 'qwp-css', get_stylesheet_directory_uri() . '/css/style.css', array(), '', 'all' );
+		wp_enqueue_style( 'sr-css', get_stylesheet_directory_uri() . '/css/style.css', array(), '', 'all' );
 		
 		# JavaScript
 		wp_deregister_script( 'jquery' );																														// disable WP internal jquery for own version
-		wp_register_script( 'jquery',  		get_stylesheet_directory_uri() . '/js/jquery.min.js', false, '2.1.4', true );										// your own jQuery version
-		wp_register_script( 'modernizr', 	get_stylesheet_directory_uri() . '/js/modernizr.dev.min.js', false, '3.0', false );									// Modernizr 3
-		wp_register_script( 'qwp', 			get_stylesheet_directory_uri() . '/js/quint.min.js', false, '1.0', true );											// Child-Javascript
-		wp_localize_script( 'qwp', 			'qwp', array( 'siteurl' => get_stylesheet_directory_uri() ));														// Site URL in Javasript available
-		
-		// enqueue styles and scripts
-		wp_enqueue_style( 'qwp-css' );
-		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'modernizr' );
-		wp_enqueue_script( 'qwp' );
+		wp_enqueue_script( 'jquery',  		get_stylesheet_directory_uri() . '/js/jquery.min.js', false, '2.1.4', true );										// your own jQuery version
+		wp_enqueue_script( 'modernizr', 	get_stylesheet_directory_uri() . '/js/modernizr.dev.min.js', false, '3.0', false );									// Modernizr 3
+//		wp_enqueue_script( 'sr', 			get_stylesheet_directory_uri() . '/js/JS-FILE.min.js', false, '1.0', true );										// Child-Javascript
+//		wp_localize_script( 'sr', 			'sr', array( 'siteurl' => get_stylesheet_directory_uri() ));														// Site URL in Javasript available		
 	}
 }
-add_action( 'wp_enqueue_scripts', 'qwp_enqueue_style', 999 );
+add_action( 'wp_enqueue_scripts', 'sr_enqueue_style', 999 );
 
 
 // Additional Images sizes for Content
 /*########################################################################################################################################################################################*/
-if( ! function_exists( 'qwp_image_sizes' )) {
-	function qwp_image_sizes() {
+if( ! function_exists( 'sr_image_sizes' )) {
+	function sr_image_sizes() {
 	
 		add_theme_support( 'post-thumbnails' );																													// Add post thumbnail supports. http://codex.wordpress.org/Post_Thumbnails
 		set_post_thumbnail_size( 240, 240, true );																												// square thumbnails
@@ -37,32 +30,32 @@ if( ! function_exists( 'qwp_image_sizes' )) {
 		add_image_size( 'NAME', 240, 0 );
 	}
 }
-add_action( 'after_setup_theme', 'qwp_image_sizes', 999 );
+add_action( 'after_setup_theme', 'sr_image_sizes', 999 );
 
 
 # Add new image sizes to mediathek
 /*
-if( ! function_exists( 'qwp_image_sizes_choose' )) {
-	function qwp_image_sizes_choose($sizes) {
+if( ! function_exists( 'sr_image_sizes_choose' )) {
+	function sr_image_sizes_choose($sizes) {
 		$custom_sizes = array(
-			'qwp_medium' 		=> 'Normal',																													// Querformat Large
-			'qwp_large' 		=> 'Big',																														// Querformat Medium
+			'sr_medium' 		=> 'Normal',																													// Querformat Large
+			'sr_large' 		=> 'Big',																														// Querformat Medium
 		);
 		return array_merge($sizes, $custom_sizes);
 	//	return $custom_sizes;
 	}
 }
-add_filter( 'image_size_names_choose', 'qwp_image_sizes_choose', 999 );
+add_filter( 'image_size_names_choose', 'sr_image_sizes_choose', 999 );
 */
 
 
 // Theme Support
 /*########################################################################################################################################################################################*/ 
-if( ! function_exists( 'qwp_theme_support' )) {
-	function qwp_theme_support() {
+if( ! function_exists( 'sr_theme_support' )) {
+	function sr_theme_support() {
 	
 		// Add language supports.
-		load_theme_textdomain( 'qwp', get_template_directory() . '/lang' );
+		load_theme_textdomain( 'sr', get_template_directory() . '/lang' );
 		
 		// Let WordPress manage the document title.
 		add_theme_support( 'title-tag' );
@@ -84,7 +77,7 @@ if( ! function_exists( 'qwp_theme_support' )) {
 	    ));
 	}
 }
-add_action( 'after_setup_theme', 'qwp_theme_support' );
+add_action( 'after_setup_theme', 'sr_theme_support' );
 
 
 // Get page ID from slug
@@ -109,8 +102,8 @@ function get_page_by_slug($page_slug, $post_type = 'page' ) {
 // WISIWYG/HTML editor tabs in edit posts/pages 
 /*########################################################################################################################################################################################*/
 /*
-if( ! function_exists( 'qwp_disable_html_editor' )) {	
-	function qwp_disable_html_editor() {
+if( ! function_exists( 'sr_disable_html_editor' )) {	
+	function sr_disable_html_editor() {
 	    global $current_user;
 	    get_currentuserinfo();
 	    
@@ -123,27 +116,27 @@ if( ! function_exists( 'qwp_disable_html_editor' )) {
 	}
 }
 add_filter( 'wp_default_editor', create_function('', 'return "tinymce";') );
-add_action( 'admin_head', 'qwp_disable_html_editor' );
+add_action( 'admin_head', 'sr_disable_html_editor' );
 */
 
 
 // Session
 /*########################################################################################################################################################################################*/
 /*
-add_action('init', 'qwp_start_session', 1);																														// start session on pageload
-add_action('wp_login', 'qwp_end_session');																														// stop session on login
-add_action('wp_logout', 'qwp_end_session');																														// stop session on logout
+add_action('init', 'sr_start_session', 1);																														// start session on pageload
+add_action('wp_login', 'sr_end_session');																														// stop session on login
+add_action('wp_logout', 'sr_end_session');																														// stop session on logout
 
-if( ! function_exists( 'qwp_start_session' )) {	
-	function qwp_start_session() {
+if( ! function_exists( 'sr_start_session' )) {	
+	function sr_start_session() {
 	    if(!session_id()) {
 	        session_start();
 	    }
 	}
 }
 
-if( ! function_exists( 'qwp_end_session' )) {	
-	function qwp_end_session() {
+if( ! function_exists( 'sr_end_session' )) {	
+	function sr_end_session() {
 	    session_destroy();
 	}
 }
@@ -251,37 +244,30 @@ if ( ! function_exists( 'generate_background_mediaqueries' )) {
 /*########################################################################################################################################################################################*/
 /*
 // register your custom activity widgets
-if( ! function_exists( 'qwp_add_custom_dashboard_activity' )) {	
-	function qwp_add_custom_dashboard_activity() {
-	    wp_add_dashboard_widget('custom_dashboard_activity', 'Projekte', 'qwp_dashboard_site_activity');
-	    wp_add_dashboard_widget('dashboard_widget', 'Dokumentation zum CMS', 'qwp_doku_dashboard_widget_function');
+if( ! function_exists( 'sr_add_custom_dashboard_activity' )) {	
+	function sr_add_custom_dashboard_activity() {
+	    wp_add_dashboard_widget('custom_dashboard_activity', 'Projekte', 'sr_dashboard_site_activity');
+	    wp_add_dashboard_widget('dashboard_widget', 'Dokumentation zum CMS', 'sr_doku_dashboard_widget_function');
 	
 	}
 }
-add_action('wp_dashboard_setup', 'qwp_add_custom_dashboard_activity' );
+add_action('wp_dashboard_setup', 'sr_add_custom_dashboard_activity' );
 
 
 // Function that outputs the contents of the dashboard widget
-if( ! function_exists( 'qwp_doku_dashboard_widget_function' )) {	
-	function qwp_doku_dashboard_widget_function() {
-		echo '<p><a href="'.get_stylesheet_directory_uri().'/docs/quint_wordpress.pdf"><span class="dashicons-before dashicons-media-document"></span> <span class="ab-label">'._x( 'PDF qu-int.Wordpress Dokumentation', 'admin bar menu group label' ).'</span></a></p>
-		
-			<p><a href="'.get_stylesheet_directory_uri().'/docs/3_iPhones_frontal.zip"><span class="dashicons-before dashicons-media-archive"></span> <span class="ab-label">'._x( '3 iPhones frontal (Photoshop Vorlagen)', 'admin bar menu group label' ).'</span></a></p>
-			<p><a href="'.get_stylesheet_directory_uri().'/docs/3_iPhones_schraeg.zip"><span class="dashicons-before dashicons-media-archive"></span> <span class="ab-label">'._x( '3 iPhones schräg (Photoshop Vorlagen)', 'admin bar menu group label' ).'</span></a></p>
-			<p><a href="'.get_stylesheet_directory_uri().'/docs/3_MacBooks.zip"><span class="dashicons-before dashicons-media-archive"></span> <span class="ab-label">'._x( '3 MacBooks (Photoshop Vorlagen)', 'admin bar menu group label' ).'</span></a></p>
-			<p><a href="'.get_stylesheet_directory_uri().'/docs/iPad_liegend.zip"><span class="dashicons-before dashicons-media-archive"></span> <span class="ab-label">'._x( 'iPad liegend (Photoshop Vorlagen)', 'admin bar menu group label' ).'</span></a></p>
-			<p><a href="'.get_stylesheet_directory_uri().'/docs/Responsive_Collection_1.zip"><span class="dashicons-before dashicons-media-archive"></span> <span class="ab-label">'._x( 'Responsive Collection 1 (Photoshop Vorlagen)', 'admin bar menu group label' ).'</span></a></p>
-			<p><a href="'.get_stylesheet_directory_uri().'/docs/Responsive_Collection_2.zip"><span class="dashicons-before dashicons-media-archive"></span> <span class="ab-label">'._x( 'Responsive Collection 2 (Photoshop Vorlagen)', 'admin bar menu group label' ).'</span></a></p>';
+if( ! function_exists( 'sr_doku_dashboard_widget_function' )) {	
+	function sr_doku_dashboard_widget_function() {
+		echo '<p><a href="'.get_stylesheet_directory_uri().'/PATH/"><span class="dashicons-before dashicons-media-document"></span> <span class="ab-label">'._x( 'TEXT', 'admin bar menu group label' ).'</span></a></p>';
 	}
 }
 
 // The Dashboard widget
-if( ! function_exists( 'qwp_dashboard_site_activity' )) {	
-	function qwp_dashboard_site_activity() {
+if( ! function_exists( 'sr_dashboard_site_activity' )) {	
+	function sr_dashboard_site_activity() {
 	
 	    echo '<div id="activity-widget">';
 	
-	    $future_posts = qwp_dashboard_recent_post_types( array(
+	    $future_posts = sr_dashboard_recent_post_types( array(
 	        'post_type'  => 'projekte',
 	        'display' => 5,
 	        'max'     => 7,
@@ -291,7 +277,7 @@ if( ! function_exists( 'qwp_dashboard_site_activity' )) {
 	        'id'      => 'future-posts',
 	    ) );
 	
-	    $recent_posts = qwp_dashboard_recent_post_types( array(
+	    $recent_posts = sr_dashboard_recent_post_types( array(
 	        'post_type'  => 'projekte',
 	        'display' => 5,
 	        'max'     => 7,
@@ -315,8 +301,8 @@ if( ! function_exists( 'qwp_dashboard_site_activity' )) {
 }
 
 // Get Dashboard data
-if( ! function_exists( 'qwp_dashboard_recent_post_types' )) {	
-	function qwp_dashboard_recent_post_types( $args ) {
+if( ! function_exists( 'sr_dashboard_recent_post_types' )) {	
+	function sr_dashboard_recent_post_types( $args ) {
 	
 		if ( ! $args['post_type'] ) {
 			$args['post_type'] = 'any';
