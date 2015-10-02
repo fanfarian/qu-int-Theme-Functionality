@@ -5,11 +5,11 @@
  *
  * This file is used to markup the public-facing aspects of the plugin.
  *
- * @link       http://qu-int.com/koepfe/stefan-reichert
+ * @link       http://stefan-reichert.com
  * @since      1.0.0
  *
- * @package    Qu_Int_Theme_Functionality
- * @subpackage Qu_Int_Theme_Functionality/public/partials
+ * @package    sr_theme_functionality
+ * @subpackage sr_theme_functionality/public/partials
  */
 ?>
 
