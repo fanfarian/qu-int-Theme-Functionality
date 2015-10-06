@@ -19,12 +19,13 @@ Functionality plugin with important settings, enhancements and fixes for WordPre
 5. Update notification for Administrators
 6. Quick Performance Report
 7. Add custom CSS for Administrators
-8. Remove inline css style from gallery
-9. Clean the output of attributes of images in editor
-10. Remove width and height in editor
-11. Redirect Attachment Pages (mostly images) to their parent page
-12. Remove WP generated content from the head
-13. Add various favicons and logos for iOS, Android, Windows
+8. Add custom JS for Administrators
+9. Remove inline css style from gallery
+10. Clean the output of attributes of images in editor
+11. Remove width and height in editor
+12. Redirect Attachment Pages (mostly images) to their parent page
+13. Remove WP generated content from the head
+14. Add various favicons and logos for iOS, Android, Windows
 
 
 = 1. Allow upload of svg and font files =
@@ -58,26 +59,28 @@ Display a quick performance report for admins as HTML comment at the bottom of t
 = 7. Add custom CSS for Administrators =
 Checks if file exists in (child) 'theme-folder/css/admin.css' and enqueues file automatically
 
+= 8. Add custom JS for Administrators =
+Checks if file exists in 'theme-folder/js/admin.min.js' and enqueues file automatically
 
-= 8. Remove inline css style from gallery =
+= 9. Remove inline css style from gallery =
 You need to style your gallery through your own css files
 
 
-= 9. Clean the output of attributes of images in editor = 
+= 10. Clean the output of attributes of images in editor = 
 Better align classes: alignright. alignleft, aligncenter
 
 
-= 10. Remove width and height in editor =
+= 11. Remove width and height in editor =
 Better responsive images
 Also sets 'alt' = 'titel' if no alt tag provided for the image
 Check if RICG Plugin makes this obsolete
 
 
-= 11. Redirect Attachment Pages (mostly images) to their parent page  =
+= 12. Redirect Attachment Pages (mostly images) to their parent page  =
 Only if parent is available
 
 
-= 12. Remove WP generated content from the head =
+= 13. Remove WP generated content from the head =
 * Category feeds
 * Post and comment feeds
 * EditURI link
@@ -102,7 +105,7 @@ Only if parent is available
 -> v3 options page to decide which content is removed
 
 
-= 13. Add various favicons and logos = 
+= 14. Add various favicons and logos = 
 Checks if the following file exist in the (child) theme-folder
 * touch-icon-192x192.png (192x192)
 * apple-touch-icon-180x180-precomposed.png (180x180)
@@ -145,12 +148,15 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 
 == Changelog ==
 
+= 2.3.0 =
+* Added script for custom admin javascript in theme-folder/js/admin.min.js inclusion
+
 = 2.2.1 =
 * Better Readme
 
 = 2.2.0 =
 * New name: sr-theme-functionality
-* Update script 'GitHub Updater' from 'radishconcepts' removed
+* Removed update script 'GitHub Updater' from 'radishconcepts', better coming in later version
 
 = 2.1.2 =
 * GitHub Updater Test

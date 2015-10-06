@@ -197,9 +197,31 @@ class sr_theme_functionality_Admin {
 		}
 	}
 	
+	/**
+     * 8. Add custom JS for Administrators
+     * Checks if file exists in 'theme-folder/js/admin.min.js' and enqueues file automatically
+     *
+     * @since  2.3.0
+     * @access public
+     * @return void
+     */
+	public function admin_javascript() {
+		
+		$admin_js_min_path = get_stylesheet_directory_uri().'/js/admin.min.js';
+		$admin_js_path = get_stylesheet_directory_uri().'/js/admin.js';
+		
+		if($this->web_url_exists($admin_js_min_path)){
+			wp_enqueue_script( 'js-admin',  $admin_js_min_path, array('jquery'), '1.2', true );
+			
+		}
+		elseif($this->web_url_exists($admin_js_path)){
+			wp_enqueue_script( 'js-admin',  $admin_js_path, array('jquery'), '1.2', true );
+		}
+	}	
+	
 	
 	/**
-     * 8. Remove inline css style from gallery
+     * 9. Remove inline css style from gallery
      * You need to style your gallery through your own css files
      *
      * @since  1.0.0
@@ -211,7 +233,7 @@ class sr_theme_functionality_Admin {
 	}
 	
 	/**
-     * 9. Clean the output of attributes of images in editor. 
+     * 10. Clean the output of attributes of images in editor. 
      * Courtesy of SitePoint. http://www.sitepoint.com/wordpress-change-img-tag-html/
      *
      * @since  1.0.0
@@ -224,7 +246,7 @@ class sr_theme_functionality_Admin {
 	}
 	
 	/**
-     * 10. Remove width and height in editor, for a better responsive world. 
+     * 11. Remove width and height in editor, for a better responsive world. 
      * Also sets 'alt' = 'titel' if no alt tag provided for the image
      *
      * @since  2.2.0
@@ -252,7 +274,7 @@ class sr_theme_functionality_Admin {
 	}
 	
 	/**
-     * 11. Redirect Attachment Pages (mostly images) to their parent page if available
+     * 12. Redirect Attachment Pages (mostly images) to their parent page if available
      *
      * @since  1.0.0
      * @access public
