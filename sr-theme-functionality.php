@@ -30,6 +30,14 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+if( ! class_exists( 'SR_Plugin_Updater' ) ){
+	include_once( plugin_dir_path( __FILE__ ) . 'updater.php' );
+}
+
+
+
+
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-sr-theme-functionality-activator.php
@@ -67,6 +75,13 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-sr-theme-functionality.php
  * @since    1.0.0
  */
 function run_sr_theme_functionality() {
+
+	$updater = new SR_Plugin_Updater( __FILE__ );
+	$updater->set_username( 'fanfarian' );
+	$updater->set_repository( 'sr-theme-functionality' );
+	//	$updater->authorize( 'abcdefghijk1234567890' ); // Your auth code goes here for private repos
+	
+	$updater->initialize();
 
 	$plugin = new sr_theme_functionality();
 	$plugin->run();
