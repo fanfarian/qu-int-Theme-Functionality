@@ -4,7 +4,7 @@ Donate link: http://stefan-reichert.com/
 Tags: theme functionality, add mime-types, resonsive videos, performance report, admin css, clean header, favicons
 Requires at least: 3.6.0
 Tested up to: 4.3
-Stable tag: 2.1.0
+Stable tag: 2.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -148,6 +148,11 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 1. No Screenshots available
 
 == Changelog ==
+
+= 2.4.0 =
+Automatically update the plugin from GitHub with new updater script based on 
+* Smashing Magazin (http://www.smashingmagazine.com/2015/08/deploy-wordpress-plugins-with-github-using-transients/)
+* YahnisElsts (https://github.com/YahnisElsts/plugin-update-checker)
 
 = 2.3.0 =
 * Added script for custom admin javascript in theme-folder/js/admin.min.js inclusion
