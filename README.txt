@@ -4,11 +4,11 @@ Donate link: http://stefan-reichert.com/
 Tags: theme functionality, add mime-types, resonsive videos, performance report, admin css, clean header, favicons
 Requires at least: 3.6.0
 Tested up to: 4.3
-Stable tag: 2.4.0
+Stable tag: 2.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Functionality plugin with important settings, enhancements and fixes for WordPress themes
+Functionality plugin with important settings, enhancements and fixes for WordPress themes.
 
 == Description ==
 
@@ -103,7 +103,7 @@ Only if parent is available
 * WPML CSS
 * WPML JavaSript
 
--> v3 options page to decide which content is removed
+-> Options page planned in v3.0.0 to decide which content is removed
 
 
 = 14. Add various favicons and logos = 
@@ -145,9 +145,13 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 
 
 == Screenshots ==
-1. No Screenshots available
+1. No screenshots available
 
 == Changelog ==
+
+= 2.5.0 =
+Alternative, flexible and better update script for the plugin
+* YahnisElsts (https://github.com/YahnisElsts/plugin-update-checker)
 
 = 2.4.0 =
 Automatically update the plugin from GitHub with new updater script based on 
