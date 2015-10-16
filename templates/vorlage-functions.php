@@ -92,6 +92,36 @@ function get_page_by_slug($page_slug, $post_type = 'page' ) {
 }
 
 
+// Login-Logo, Link und Tooltip
+/*########################################################################################################################################################################################*/
+/*
+if( ! function_exists( 'qwp_login_logo' )) {
+	function qwp_login_logo() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background-image: url('<?php echo get_stylesheet_directory_uri(  ) ?>/img/login_logo.svg');
+            background-size: cover;
+            width: 100% !important;
+            height: 100px !important;
+        }
+    </style>
+<?php }
+}
+add_action( 'login_enqueue_scripts', 'qwp_login_logo', 999 );
+
+
+function qwp_loginpage_custom_link() {
+	return 'http://www.qu-int.com';
+}
+add_filter('login_headerurl','qwp_loginpage_custom_link');
+
+
+function change_title_on_logo() {
+	return 'qu-int.gmbh | marken | medien | kommunikation';
+}
+add_filter('login_headertitle', 'change_title_on_logo');
+*/
+
 
 // Disables the Google Sitelink Search Box functionality in WordPress SEO (Premium) 
 /*########################################################################################################################################################################################*/ 

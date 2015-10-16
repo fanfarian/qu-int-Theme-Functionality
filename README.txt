@@ -1,9 +1,10 @@
 === Theme Functionality ===
 Contributors: Stefan Reichert
+Donate link: http://stefan-reichert.com/
 Tags: theme functionality, add mime-types, resonsive videos, performance report, admin css, clean header, favicons
 Requires at least: 3.6.0
 Tested up to: 4.3
-Stable tag: 2.1
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -133,7 +134,7 @@ https://github.com/fanfarian/sr-theme-functionality
 
 This section describes how to install the plugin and get it working.
 
-1. Upload 'sr-theme-functionality.php' to the '/wp-content/plugins/'' directory
+1. Upload 'sr-theme-functionality' to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Let the magic happen...
 
@@ -144,7 +145,7 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 
 
 == Screenshots ==
-
+1. No Screenshots available
 
 == Changelog ==
 
@@ -172,3 +173,7 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 * Hosted on GitHub
 * Plugin Boilerplate template
 
+== Upgrade Notice ==
+
+
+`<?php code(); // goes in backticks ?>`
