@@ -179,6 +179,9 @@ class sr_theme_functionality {
 
 		$this->loader->add_action( 'init', $plugin_public, 'clean_up' );																						// 13. Remove WP generated content from the head
 		$this->loader->add_action( 'wp_head', $plugin_public, 'meta_icons' );																					// 14. Add various favicons and logos for iOS, Android, Windows
+		$this->loader->add_action( 'the_category', $plugin_public, 'remove_category_rel_from_category_list' );													// 15. Removes invalid rel attribute values in the categorylist
+		$this->loader->add_action( 'body_class', $plugin_public, 'add_slug_to_body_class' );																	// 16. Add page slug to body class
+		
 	}
 
 	/**
