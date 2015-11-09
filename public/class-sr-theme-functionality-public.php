@@ -237,7 +237,41 @@ class sr_theme_functionality_Public {
 			';
 		}
 	}
-
+		
+	/**
+     * Removes invalid rel attribute values in the categorylist
+     *
+     * @since  1.0.0
+     * @access public
+     * @return void
+     */
+	public function remove_category_rel_from_category_list( $list ) {
+		return str_replace('rel="category tag"', 'rel="tag"', $list);
+	}
+	
+	/**
+     * Add page slug to body class - Credit: Starkers Wordpress Theme
+     *
+     * @since  1.0.0
+     * @access public
+     * @return void
+     */
+	public function add_slug_to_body_class($classes)
+	{
+	    global $post;
+	    if (is_home()) {
+	        $key = array_search('blog', $classes);
+	        if ($key > -1) {
+	            unset($classes[$key]);
+	        }
+	    } elseif (is_page()) {
+	        $classes[] = sanitize_html_class($post->post_name);
+	    } elseif (is_singular()) {
+	        $classes[] = sanitize_html_class($post->post_name);
+	    }
+	
+	    return $classes;
+	}
 
 	/**
 	 * Register the stylesheets for the public-facing side of the site.

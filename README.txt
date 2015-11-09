@@ -4,7 +4,7 @@ Donate link: http://stefan-reichert.com/
 Tags: theme functionality, add mime-types, resonsive videos, performance report, admin css, clean header, favicons
 Requires at least: 3.6.0
 Tested up to: 4.3
-Stable tag: 2.5.0
+Stable tag: 2.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,7 +27,8 @@ Functionality plugin with important settings, enhancements and fixes for WordPre
 12. Redirect Attachment Pages (mostly images) to their parent page
 13. Remove WP generated content from the head
 14. Add various favicons and logos for iOS, Android, Windows
-
+15. Removes invalid rel attribute values in the categorylist
+16. Add page slug to body class
 
 = 1. Allow upload of svg and font files =
 Add mime types for 'svg', 'ttf', 'otf', 'woff', 'woff2', 'eot' to media uploader
@@ -60,8 +61,10 @@ Display a quick performance report for admins as HTML comment at the bottom of t
 = 7. Add custom CSS for Administrators =
 Checks if file exists in (child) 'theme-folder/css/admin.css' and enqueues file automatically
 
+
 = 8. Add custom JS for Administrators =
 Checks if file exists in 'theme-folder/js/admin.min.js' and enqueues file automatically
+
 
 = 9. Remove inline css style from gallery =
 You need to style your gallery through your own css files
@@ -126,6 +129,13 @@ Also generates tags for application names on mobile
 * <meta name="application-name" content="'.get_bloginfo('name').'">'; 
 
 
+= 15. Removes invalid rel attribute values in the categorylist =
+
+
+= 16. Add page slug to body class =
+Adds the current page slug to the body class
+
+
 = Website =
 https://github.com/fanfarian/sr-theme-functionality
 
@@ -148,6 +158,12 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 1. No screenshots available
 
 == Changelog ==
+
+
+= 2.6.0 =
+New Features
+* Removes invalid rel attribute values in the categorylist
+* Add page slug to body class
 
 = 2.5.0 =
 Alternative, flexible and better update script for the plugin
