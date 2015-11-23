@@ -16,7 +16,7 @@
  * Plugin Name:       Theme Functionality
  * Plugin URI:        https://github.com/fanfarian/sr-theme-functionality
  * Description:       Functionality plugin with important settings, enhancements and fixes for WordPress themes
- * Version:           2.6.0
+ * Version:           2.7.0
  * Author:            Stefan Reichert
  * Author URI:        http://stefan-reichert.com
  * License:           GPL-2.0+
