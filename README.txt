@@ -4,7 +4,7 @@ Donate link: http://stefan-reichert.com/
 Tags: theme functionality, add mime-types, resonsive videos, performance report, admin css, clean header, favicons
 Requires at least: 3.6.0
 Tested up to: 4.3
-Stable tag: 2.6.0
+Stable tag: 2.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,7 +77,6 @@ Better align classes: alignright. alignleft, aligncenter
 = 11. Remove width and height in editor =
 Better responsive images
 Also sets 'alt' = 'titel' if no alt tag provided for the image
-Check if RICG Plugin makes this obsolete
 
 
 = 12. Redirect Attachment Pages (mostly images) to their parent page  =
@@ -110,6 +109,7 @@ Only if parent is available
 
 
 = 14. Add various favicons and logos = 
+NEW: Check if WP-Core function 'has_site_icon()' is supported
 Checks if the following file exist in the (child) theme-folder
 * touch-icon-192x192.png (192x192)
 * apple-touch-icon-180x180-precomposed.png (180x180)
@@ -119,6 +119,7 @@ Checks if the following file exist in the (child) theme-folder
 * apple-touch-icon-precomposed.png (57x57)
 * favicon.ico (16x16 + 32x32)
 * browserconfig.xml 
+
 
 browserconfig.xml needs the following files
 * tile.png (558x558)
@@ -159,6 +160,9 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 
 == Changelog ==
 
+= 2.7.0 =
+Check if WP-Core function 'has_site_icon()' is supported.
+Otherwise insert favicons as described in 14.
 
 = 2.6.0 =
 New Features
