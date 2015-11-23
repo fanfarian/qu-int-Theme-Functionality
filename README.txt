@@ -30,6 +30,8 @@ Functionality plugin with important settings, enhancements and fixes for WordPre
 15. Removes invalid rel attribute values in the categorylist
 16. Add page slug to body class
 
+
+
 = 1. Allow upload of svg and font files =
 Add mime types for 'svg', 'ttf', 'otf', 'woff', 'woff2', 'eot' to media uploader
 
@@ -161,7 +163,7 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 == Changelog ==
 
 = 2.7.0 =
-Check if WP-Core function 'has_site_icon()' is supported.
+Check if WP-Core function 'has_site_icon()' is supported and use this function.
 Otherwise insert favicons as described in 14.
 
 = 2.6.0 =
