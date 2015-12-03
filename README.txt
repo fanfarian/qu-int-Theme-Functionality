@@ -25,7 +25,7 @@ Functionality plugin with important settings, enhancements and fixes for WordPre
 10. Clean the output of attributes of images in editor
 11. Remove width and height in editor
 12. Redirect Attachment Pages (mostly images) to their parent page
-13. Remove WP generated content from the head
+13. Remove WordPress generated content from the head
 14. Add various favicons and logos for iOS, Android, Windows
 15. Removes invalid rel attribute values in the categorylist
 16. Add page slug to body class
@@ -85,33 +85,32 @@ Also sets 'alt' = 'titel' if no alt tag provided for the image
 Only if parent is available
 
 
-= 13. Remove WP generated content from the head =
-* Category feeds
+= 13. Remove WordPress generated content from the <head> =
 * Post and comment feeds
+* Category feeds
 * EditURI link
 * Windows live writer
 * Index link
 * Previous link
 * Start link
 * Links for adjacent posts
-* WP version
 * Shortlink
 * Canonical links
-* Remove comment cookie
-* Remove WP version from RSS
-* Remove WP version from css + scripts
-* Remove pesky injected css for recent comments widget
 * Clean up comment styles in the head
-* Remove emojicons
-* WPML information
-* WPML CSS
-* WPML JavaSript
+* Remove WordPress version
+* Remove comment cookie 
+* Remove WordPress version from RSS feeds
+* Remove WordPress version from CSS + JS
+* Remove injected css for recent comments widget
+* Remove inline CSS and JS from WordPress emoji support
+* Remove WPML information
+* Remove WPML CSS + JS
 
 -> Options page planned in v3.0.0 to decide which content is removed
 
 
 = 14. Add various favicons and logos = 
-NEW: Check if WP-Core function 'has_site_icon()' is supported
+NEW: Check if WordPress-Core function 'has_site_icon()' is supported
 Checks if the following file exist in the (child) theme-folder
 * touch-icon-192x192.png (192x192)
 * apple-touch-icon-180x180-precomposed.png (180x180)
@@ -122,8 +121,7 @@ Checks if the following file exist in the (child) theme-folder
 * favicon.ico (16x16 + 32x32)
 * browserconfig.xml 
 
-
-browserconfig.xml needs the following files
+browserconfig.xml needs the following files in the (child) theme-folder
 * tile.png (558x558)
 * tile-wide.png (558x270)
 
@@ -163,7 +161,7 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 == Changelog ==
 
 = 2.7.0 =
-Check if WP-Core function 'has_site_icon()' is supported and use this function.
+Check if WordPress-Core function 'has_site_icon()' is supported and use this function.
 Otherwise insert favicons as described in 14.
 
 = 2.6.0 =
@@ -178,7 +176,6 @@ Alternative, flexible and better update script for the plugin
 = 2.4.0 =
 Automatically update the plugin from GitHub with new updater script based on 
 * Smashing Magazin (http://www.smashingmagazine.com/2015/08/deploy-wordpress-plugins-with-github-using-transients/)
-* YahnisElsts (https://github.com/YahnisElsts/plugin-update-checker)
 
 = 2.3.0 =
 * Added script for custom admin javascript in theme-folder/js/admin.min.js inclusion

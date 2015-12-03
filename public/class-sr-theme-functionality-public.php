@@ -141,7 +141,7 @@ class sr_theme_functionality_Public {
 	}	
 	
 	/**
-     * Remove WP version from remove_emojicons and css files
+     * Remove WP version from js and css files
      *
      * @since  1.0.0
      * @access public
