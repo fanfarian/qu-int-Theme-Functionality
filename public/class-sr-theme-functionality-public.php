@@ -108,8 +108,9 @@ class sr_theme_functionality_Public {
 			remove_action( 'wp_head', array($sitepress, 'meta_generator_tag'));																					// WPML information 
 			remove_action( 'wp_head', array($sitepress, 'head_langs'));																							// WPML information
 		
-			define( 'ICL_DONT_LOAD_LANGUAGE_SELECTOR_CSS', true);																								// WPML CSS
-			define( 'ICL_DONT_LOAD_LANGUAGES_JS', true);																										// WPML JavaSript
+			define( 'ICL_DONT_LOAD_NAVIGATION_CSS', true);																										// WPML Navigation stylesheets
+//			define( 'ICL_DONT_LOAD_LANGUAGE_SELECTOR_CSS', true);																								// WPML Drop-down language selector stylesheet
+			define( 'ICL_DONT_LOAD_LANGUAGES_JS', true);																										// WPML Drop-down language selector Javascript
 		}
 	}
 	

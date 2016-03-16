@@ -2,9 +2,9 @@
 Contributors: Stefan Reichert
 Donate link: http://stefan-reichert.com/
 Tags: theme functionality, add mime-types, resonsive videos, performance report, admin css, clean header, favicons
-Requires at least: 3.6.0
-Tested up to: 4.3
-Stable tag: 2.7.0
+Requires at least: 4.0
+Tested up to: 4.4
+Stable tag: 2.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -159,6 +159,9 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 1. No screenshots available
 
 == Changelog ==
+
+= 2.7.1 =
+Small Bugfix with oEmbedd feature 
 
 = 2.7.0 =
 Check if WordPress-Core function 'has_site_icon()' is supported and use this function.

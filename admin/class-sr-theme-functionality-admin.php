@@ -102,7 +102,7 @@ class sr_theme_functionality_Admin {
      * @access public
      * @return void
      */
-	public function oembed_filter($html, $url, $attr, $post_ID) {
+	public function oembed_filter($html) {
 	    $html = preg_replace('# src="https://www\.youtube\.com([^"]*)"#', ' src="https://www.youtube-nocookie.com\\1&rel=0&modestbranding=1"', $html);
 	
 	    $return = '<div class="embed-container">'.$html.'</div>';
