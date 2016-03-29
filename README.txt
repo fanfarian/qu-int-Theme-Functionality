@@ -2,9 +2,9 @@
 Contributors: Stefan Reichert
 Donate link: http://stefan-reichert.com/
 Tags: theme functionality, add mime-types, resonsive videos, performance report, admin css, clean header, favicons
-Requires at least: 3.6.0
-Tested up to: 4.3
-Stable tag: 2.7.0
+Requires at least: 4.0
+Tested up to: 4.4
+Stable tag: 2.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,13 +22,15 @@ Functionality plugin with important settings, enhancements and fixes for WordPre
 7. Add custom CSS for Administrators
 8. Add custom JS for Administrators
 9. Remove inline css style from gallery
-10. Clean the output of attributes of images in editor
+10. Clean the output of image css-classes in editor
 11. Remove width and height in editor
 12. Redirect Attachment Pages (mostly images) to their parent page
-13. Remove WP generated content from the head
+13. Remove WordPress generated content from the head
 14. Add various favicons and logos for iOS, Android, Windows
 15. Removes invalid rel attribute values in the categorylist
 16. Add page slug to body class
+
+
 
 = 1. Allow upload of svg and font files =
 Add mime types for 'svg', 'ttf', 'otf', 'woff', 'woff2', 'eot' to media uploader
@@ -70,46 +72,45 @@ Checks if file exists in 'theme-folder/js/admin.min.js' and enqueues file automa
 You need to style your gallery through your own css files
 
 
-= 10. Clean the output of attributes of images in editor = 
-Better align classes: alignright. alignleft, aligncenter
+= 10. Clean the output of image css-classes in editor = 
+Better align classes: alignright, alignleft, aligncenter
 
 
 = 11. Remove width and height in editor =
 Better responsive images
-Also sets 'alt' = 'titel' if no alt tag provided for the image
 
 
 = 12. Redirect Attachment Pages (mostly images) to their parent page  =
 Only if parent is available
 
 
-= 13. Remove WP generated content from the head =
-* Category feeds
+= 13. Remove WordPress generated content from the <head> or footer =
 * Post and comment feeds
+* Category feeds
 * EditURI link
 * Windows live writer
 * Index link
 * Previous link
 * Start link
 * Links for adjacent posts
-* WP version
 * Shortlink
 * Canonical links
-* Remove comment cookie
-* Remove WP version from RSS
-* Remove WP version from css + scripts
-* Remove pesky injected css for recent comments widget
 * Clean up comment styles in the head
-* Remove emojicons
-* WPML information
-* WPML CSS
-* WPML JavaSript
+* Remove WordPress version
+* Remove comment cookie 
+* Remove WordPress version from RSS feeds
+* Remove WordPress version from CSS + JS
+* Remove injected css for recent comments widget
+* Remove inline CSS and JS from WordPress emoji support
+* Remove wp-embedded.min.js from footer
+* Remove WPML information
+* Remove WPML CSS + JS
 
 -> Options page planned in v3.0.0 to decide which content is removed
 
 
 = 14. Add various favicons and logos = 
-NEW: Check if WP-Core function 'has_site_icon()' is supported
+NEW: Check if WordPress-Core function 'has_site_icon()' is supported
 Checks if the following file exist in the (child) theme-folder
 * touch-icon-192x192.png (192x192)
 * apple-touch-icon-180x180-precomposed.png (180x180)
@@ -120,8 +121,7 @@ Checks if the following file exist in the (child) theme-folder
 * favicon.ico (16x16 + 32x32)
 * browserconfig.xml 
 
-
-browserconfig.xml needs the following files
+browserconfig.xml needs the following files in the (child) theme-folder
 * tile.png (558x558)
 * tile-wide.png (558x270)
 
@@ -160,8 +160,17 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 
 == Changelog ==
 
+= 2.7.3 =
+Remove wp-embedded.min.js from footer
+
+= 2.7.2 =
+Small bugfixes with embedded images 
+
+= 2.7.1 =
+Small bugfix with oEmbedd feature 
+
 = 2.7.0 =
-Check if WP-Core function 'has_site_icon()' is supported.
+Check if WordPress-Core function 'has_site_icon()' is supported and use this function.
 Otherwise insert favicons as described in 14.
 
 = 2.6.0 =
@@ -176,7 +185,6 @@ Alternative, flexible and better update script for the plugin
 = 2.4.0 =
 Automatically update the plugin from GitHub with new updater script based on 
 * Smashing Magazin (http://www.smashingmagazine.com/2015/08/deploy-wordpress-plugins-with-github-using-transients/)
-* YahnisElsts (https://github.com/YahnisElsts/plugin-update-checker)
 
 = 2.3.0 =
 * Added script for custom admin javascript in theme-folder/js/admin.min.js inclusion

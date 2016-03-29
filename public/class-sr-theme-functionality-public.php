@@ -100,6 +100,7 @@ class sr_theme_functionality_Public {
 	    add_filter( 'wp_head',  array( $this, 'remove_wp_widget_recent_comments_style'), 1 );																	// Remove pesky injected css for recent comments widget
 	    add_action( 'wp_head',  array( $this, 'remove_recent_comments_style'), 1 );																				// Clean up comment styles in the head
 		add_action( 'wp_head',  array( $this, 'remove_emojicons'), 1 );																							// Remove emojicons
+		add_action( 'wp_footer', array( $this, 'remove_wp_embedded_script'), 10);																				// Removes wp-embedded.js
 
 		// Remove some WPML stuff
 		if ( function_exists('icl_object_id') ) {																												// WPML exists
@@ -108,8 +109,9 @@ class sr_theme_functionality_Public {
 			remove_action( 'wp_head', array($sitepress, 'meta_generator_tag'));																					// WPML information 
 			remove_action( 'wp_head', array($sitepress, 'head_langs'));																							// WPML information
 		
-			define( 'ICL_DONT_LOAD_LANGUAGE_SELECTOR_CSS', true);																								// WPML CSS
-			define( 'ICL_DONT_LOAD_LANGUAGES_JS', true);																										// WPML JavaSript
+			define( 'ICL_DONT_LOAD_NAVIGATION_CSS', true);																										// WPML Navigation stylesheets
+//			define( 'ICL_DONT_LOAD_LANGUAGE_SELECTOR_CSS', true);																								// WPML Drop-down language selector stylesheet
+			define( 'ICL_DONT_LOAD_LANGUAGES_JS', true);																										// WPML Drop-down language selector Javascript
 		}
 	}
 	
@@ -131,6 +133,9 @@ class sr_theme_functionality_Public {
 	
 	    // Remove from head tag
 	    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+
+		// filter to remove TinyMCE emojis
+		add_filter( 'tiny_mce_plugins', 'disable_emoji_tinymce' );     
 	
 	    // Remove from print related styling
 	    remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -141,7 +146,7 @@ class sr_theme_functionality_Public {
 	}	
 	
 	/**
-     * Remove WP version from remove_emojicons and css files
+     * Remove WP version from js and css files
      *
      * @since  1.0.0
      * @access public
@@ -157,7 +162,7 @@ class sr_theme_functionality_Public {
      * Remove injected CSS for recent comments widget
      *
      * @since  1.0.0
-     * @access private
+     * @access public
      * @return void
      */
 	public function remove_wp_widget_recent_comments_style() {
@@ -170,7 +175,7 @@ class sr_theme_functionality_Public {
      * Remove injected CSS from recent comments widget
      *
      * @since  1.0.0
-     * @access private
+     * @access public
      * @return void
      */
 	public function remove_recent_comments_style() {
@@ -179,6 +184,19 @@ class sr_theme_functionality_Public {
 			remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
 		}
 	}
+	
+	
+	/**
+     * Remove injected CSS from recent comments widget
+     *
+     * @since  2.7.3
+     * @access public
+     * @return void
+     */
+	public function remove_wp_embedded_script(){
+		wp_deregister_script( 'wp-embed' );
+	}
+	
 	
 	/**
      * Add various favicons and logos for iOS, Android, Windows
