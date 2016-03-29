@@ -4,7 +4,7 @@ Donate link: http://stefan-reichert.com/
 Tags: theme functionality, add mime-types, resonsive videos, performance report, admin css, clean header, favicons
 Requires at least: 4.0
 Tested up to: 4.4
-Stable tag: 2.7.1
+Stable tag: 2.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,7 +22,7 @@ Functionality plugin with important settings, enhancements and fixes for WordPre
 7. Add custom CSS for Administrators
 8. Add custom JS for Administrators
 9. Remove inline css style from gallery
-10. Clean the output of attributes of images in editor
+10. Clean the output of image css-classes in editor
 11. Remove width and height in editor
 12. Redirect Attachment Pages (mostly images) to their parent page
 13. Remove WordPress generated content from the head
@@ -72,20 +72,19 @@ Checks if file exists in 'theme-folder/js/admin.min.js' and enqueues file automa
 You need to style your gallery through your own css files
 
 
-= 10. Clean the output of attributes of images in editor = 
-Better align classes: alignright. alignleft, aligncenter
+= 10. Clean the output of image css-classes in editor = 
+Better align classes: alignright, alignleft, aligncenter
 
 
 = 11. Remove width and height in editor =
 Better responsive images
-Also sets 'alt' = 'titel' if no alt tag provided for the image
 
 
 = 12. Redirect Attachment Pages (mostly images) to their parent page  =
 Only if parent is available
 
 
-= 13. Remove WordPress generated content from the <head> =
+= 13. Remove WordPress generated content from the <head> or footer =
 * Post and comment feeds
 * Category feeds
 * EditURI link
@@ -103,6 +102,7 @@ Only if parent is available
 * Remove WordPress version from CSS + JS
 * Remove injected css for recent comments widget
 * Remove inline CSS and JS from WordPress emoji support
+* Remove wp-embedded.min.js from footer
 * Remove WPML information
 * Remove WPML CSS + JS
 
@@ -160,8 +160,14 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 
 == Changelog ==
 
+= 2.7.3 =
+Remove wp-embedded.min.js from footer
+
+= 2.7.2 =
+Small bugfixes with embedded images 
+
 = 2.7.1 =
-Small Bugfix with oEmbedd feature 
+Small bugfix with oEmbedd feature 
 
 = 2.7.0 =
 Check if WordPress-Core function 'has_site_icon()' is supported and use this function.

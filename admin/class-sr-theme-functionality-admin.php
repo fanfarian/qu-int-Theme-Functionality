@@ -62,7 +62,7 @@ class sr_theme_functionality_Admin {
 	 * @param string $url - preferably a fully qualified URL
 	 * @return boolean - true if it is out there somewhere
 	 */
-	private function web_url_exists($url) {
+	private function web_url_exists( $url ) {
 	    if (($url == '') || ($url == null)) { return false; }
 	    $response = wp_remote_head( $url, array( 'timeout' => 5 ) );
 	    $accepted_status_codes = array( 200, 301, 302 );
@@ -102,7 +102,7 @@ class sr_theme_functionality_Admin {
      * @access public
      * @return void
      */
-	public function oembed_filter($html) {
+	public function oembed_filter( $html ) {
 	    $html = preg_replace('# src="https://www\.youtube\.com([^"]*)"#', ' src="https://www.youtube-nocookie.com\\1&rel=0&modestbranding=1"', $html);
 	
 	    $return = '<div class="embed-container">'.$html.'</div>';
@@ -132,7 +132,7 @@ class sr_theme_functionality_Admin {
      * @access public
      * @return void
      */	
-	public function remove_menus () {
+	public function remove_menus() {
 		
 		global $menu;  
 	    global $submenu;
@@ -240,7 +240,7 @@ class sr_theme_functionality_Admin {
      * @access public
      * @return string return custom output for inserted images in posts
      */
-	public function gallery_style($css) {
+	public function gallery_style( $css ) {
 		return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
 	}
 	
@@ -252,9 +252,9 @@ class sr_theme_functionality_Admin {
      * @access public
      * @return string return custom output for inserted images in posts
      */
-	public function image_tag_align_class($class, $id, $align, $size) {
-		$align = 'align' . esc_attr($align);
-		return $align;
+	public function image_tag_align_class( $class, $id, $align, $size ) {
+		$class = 'align' . esc_attr($align);
+		return $class;
 	}
 	
 	/**
@@ -265,24 +265,11 @@ class sr_theme_functionality_Admin {
      * @access public
      * @return string return custom output for inserted images in posts
      */
-	public function image_tag_responsive($html, $id, $alt, $title) {
+	public function image_tag_responsive( $html ) {
 		
-		if(empty($alt)){
-			$alt = $title;
-		}
-		
-		return preg_replace(array(
-				'/\s+width="\d+"/i',
-				'/\s+height="\d+"/i',
-				'/alt=""/i'
-			),
-			array(
-				'',
-				'',
-				'',
-				'alt="' . $alt . '"'
-			),
-			$html);
+		$html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
+
+		return $html;
 	}
 	
 	/**
@@ -292,7 +279,7 @@ class sr_theme_functionality_Admin {
      * @access public
      * @return string return custom output for inserted images in posts
      */
-	public function template_redirect () {
+	public function template_redirect() {
 	    global $wp_query, $post;
 	
 	    if ( is_attachment() ) {
