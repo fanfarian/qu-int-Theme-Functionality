@@ -4,7 +4,7 @@ Donate link: http://stefan-reichert.com/
 Tags: theme functionality, add mime-types, resonsive videos, performance report, admin css, clean header, favicons
 Requires at least: 4.0
 Tested up to: 4.5
-Stable tag: 2.7.4
+Stable tag: 2.7.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -112,7 +112,7 @@ Only if parent is available
 = 14. Add various favicons and logos = 
 NEW: Check if WordPress-Core function 'has_site_icon()' is supported
 Checks if the following file exist in the (child) theme-folder
-* touch-icon-192x192.png (192x192)
+* apple-touch-icon.png (192x192)
 * apple-touch-icon-180x180-precomposed.png (180x180)
 * apple-touch-icon-152x152-precomposed.png (152x152)
 * apple-touch-icon-120x120-precomposed.png (120x120)
@@ -120,6 +120,9 @@ Checks if the following file exist in the (child) theme-folder
 * apple-touch-icon-precomposed.png (57x57)
 * favicon.ico (16x16 + 32x32)
 * browserconfig.xml 
+
+-> Options page planned in v3.0.0 for better controll where neccessary
+
 
 browserconfig.xml needs the following files in the (child) theme-folder
 * tile.png (558x558)
@@ -160,9 +163,13 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 
 == Changelog ==
 
+= 2.7.5 =
+Changed Favicon stuff in #14
+* Change filename for 192x192 size from 'touch-icon-192x192.png' to 'apple-touch-icon.png' 
+* New PNG Favicons 16x16, 32x32, 96x96
+
 = 2.7.4 =
 Update 'plugin-update-checker'
-You might need to update manually
 
 = 2.7.3 =
 Remove wp-embedded.min.js from footer
