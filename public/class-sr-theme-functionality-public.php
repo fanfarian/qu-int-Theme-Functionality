@@ -54,23 +54,6 @@ class sr_theme_functionality_Public {
 
 	}
 	
-	/**
-	 * Check if an item exists out there in the "ether".
-	 *
-     * @since  1.0.0
-     * @access public
-	 * @param string $url - preferably a fully qualified URL
-	 * @return boolean - true if it is out there somewhere
-	 */
-	private function web_url_exists($url) {
-	    if (($url == '') || ($url == null)) { return false; }
-	    $response = wp_remote_head( $url, array( 'timeout' => 5 ) );
-	    $accepted_status_codes = array( 200, 301, 302 );
-	    if ( ! is_wp_error( $response ) && in_array( wp_remote_retrieve_response_code( $response ), $accepted_status_codes ) ) {
-	        return true;
-	    }
-	    return false;
-	}
 	
 	/**
      * 12. Remove WP generated content from the head
@@ -210,66 +193,84 @@ class sr_theme_functionality_Public {
 		
 		if ( ! function_exists( 'has_site_icon' ) || ! has_site_icon() ) { 																						// Check for new core function with 4.3
 
-			$touch_icon_192 = get_stylesheet_directory_uri().'/apple-touch-icon.png';																			// 192x192
-			$touch_icon_180 = get_stylesheet_directory_uri().'/apple-touch-icon-180x180-precomposed.png';														// 180x180
-			$touch_icon_152 = get_stylesheet_directory_uri().'/apple-touch-icon-152x152-precomposed.png';														// 152x152
-			$touch_icon_120 = get_stylesheet_directory_uri().'/apple-touch-icon-120x120-precomposed.png';														// 120x120
-			$touch_icon_76  = get_stylesheet_directory_uri().'/apple-touch-icon-76x76-precomposed.png';															// 76x76
-			$touch_icon_57  = get_stylesheet_directory_uri().'/apple-touch-icon-precomposed.png';																// 57x57
+			$stylesheet_directory_uri = get_stylesheet_directory_uri();																							// URL
+			$stylesheet_directory = get_stylesheet_directory();																									// File
+			$get_bloginfo = get_bloginfo('name');																												// Blogname
 
-//			$apple_pinned_tab  = get_stylesheet_directory_uri().'/website_icon.svg';																			// Apple "pinned tab" icons
-			$browserconfig  = get_stylesheet_directory_uri().'/browserconfig.xml';																				// Microsoft 558x270 + 558x558
+			$touch_icon_url_192 = $stylesheet_directory_uri.'/apple-touch-icon.png';																			// URL 192x192
+			$touch_icon_192 	= $stylesheet_directory.'/apple-touch-icon.png';																				// File 192x192
 
-			$favicon  	= get_stylesheet_directory_uri().'/favicon.ico';																						// Classic Favicon 16x16 + 32x32			
-			$favicon_16 = get_stylesheet_directory_uri().'/favicon-16x16.png';																					// 16x16 PNG Favicon
-			$favicon_32 = get_stylesheet_directory_uri().'/favicon-32x32.png';																					// 32x32 PNG Favicon
-			$favicon_96 = get_stylesheet_directory_uri().'/favicon-96x96.png';																					// 96x96 PNG Favicon
+			$touch_icon_url_180 = $stylesheet_directory_uri.'/apple-touch-icon-180x180-precomposed.png';														// URL 180x180
+			$touch_icon_180 	= $stylesheet_directory.'/apple-touch-icon-180x180-precomposed.png';															//  File 180x180
+
+			$touch_icon_url_152 = $stylesheet_directory_uri.'/apple-touch-icon-152x152-precomposed.png';														// URL 152x152
+			$touch_icon_152 	= $stylesheet_directory.'/apple-touch-icon-152x152-precomposed.png';															// File 152x152
+
+			$touch_icon_url_120 = $stylesheet_directory_uri.'/apple-touch-icon-120x120-precomposed.png';														// URL 120x120
+			$touch_icon_120 	= $stylesheet_directory.'/apple-touch-icon-120x120-precomposed.png';															// File 120x120
+
+			$touch_icon_url_76  = $stylesheet_directory_uri.'/apple-touch-icon-76x76-precomposed.png';															// URL 76x76
+			$touch_icon_76  	= $stylesheet_directory.'/apple-touch-icon-76x76-precomposed.png';																// File 76x76
+
+			$touch_icon_url_57  = $stylesheet_directory_uri.'/apple-touch-icon-precomposed.png';																// URL 57x57
+			$touch_icon_57  	= $stylesheet_directory.'/apple-touch-icon-precomposed.png';																	// File 57x57
+
+			$browserconfig_url  = $stylesheet_directory_uri.'/browserconfig.xml';																				// URL Microsoft 558x270 + 558x558
+			$browserconfig 	 	= $stylesheet_directory.'/browserconfig.xml';																					// File Microsoft 558x270 + 558x558
+
+			$favicon_url  	= $stylesheet_directory_uri.'/favicon.ico';																							// URL Classic Favicon 16x16 + 32x32			
+			$favicon  		= $stylesheet_directory.'/favicon.ico';																								// File Classic Favicon 16x16 + 32x32			
+
+			$favicon_url_16 = $stylesheet_directory_uri.'/favicon-16x16.png';																					// URL 16x16 PNG Favicon
+			$favicon_16 	= $stylesheet_directory.'/favicon-16x16.png';																						// File 16x16 PNG Favicon
+
+			$favicon_url_32 = $stylesheet_directory_uri.'/favicon-32x32.png';																					// URL 32x32 PNG Favicon
+			$favicon_32 	= $stylesheet_directory.'/favicon-32x32.png';																						// File 32x32 PNG Favicon
+
+			$favicon_url_96 = $stylesheet_directory_uri.'/favicon-96x96.png';																					// URL 96x96 PNG Favicon
+			$favicon_96 	= $stylesheet_directory.'/favicon-96x96.png';																						// File 96x96 PNG Favicon
 	
-			echo '		<!-- Favicons -->
-				<meta name="apple-mobile-web-app-title" content="'.get_bloginfo('name').'">
-				<meta name="application-name" content="'.get_bloginfo('name').'">';
+			echo '		<!-- Favicons from sr-theme-functionality plugin -->
+				<meta name="apple-mobile-web-app-title" content="'.$get_bloginfo.'">
+				<meta name="application-name" content="'.$get_bloginfo.'">';
 			
 			// General Icon
-			if($this->web_url_exists($touch_icon_192)){
-				echo '<link rel="icon" sizes="192x192" href="'.$touch_icon_192.'"><!-- For Chrome for Android: 192x192 -->';
+			if( is_file($touch_icon_192) ){
+				echo '<link rel="icon" sizes="192x192" href="'.$touch_icon_url_192.'"><!-- For Chrome for Android: 192x192 -->';
 			}
 			// Apple icons
-			if($this->web_url_exists($touch_icon_180)){
-				echo '<link rel="apple-touch-icon-precomposed" sizes="180x180" href="'.$touch_icon_180.'"><!-- For iPhone 6 Plus with @3× display: 180x180 -->';
+			if( is_file($touch_icon_180) ){
+				echo '<link rel="apple-touch-icon-precomposed" sizes="180x180" href="'.$touch_icon_url_180.'"><!-- For iPhone 6 Plus with @3× display: 180x180 -->';
 			}
-			if($this->web_url_exists($touch_icon_152)){
-				echo '<link rel="apple-touch-icon-precomposed" sizes="152x152" href="'.$touch_icon_152.'"><!-- For iPad with @2× display running iOS ≥ 7: 152x152 -->';
+			if( is_file($touch_icon_152) ){
+				echo '<link rel="apple-touch-icon-precomposed" sizes="152x152" href="'.$touch_icon_url_152.'"><!-- For iPad with @2× display running iOS ≥ 7: 152x152 -->';
 			}
-			if($this->web_url_exists($touch_icon_120)){
-				echo '<link rel="apple-touch-icon-precomposed" sizes="120x120" href="'.$touch_icon_120.'"><!-- For iPhone with @2× display running iOS ≥ 7: 120x120 -->';
+			if( is_file($touch_icon_120) ){
+				echo '<link rel="apple-touch-icon-precomposed" sizes="120x120" href="'.$touch_icon_url_120.'"><!-- For iPhone with @2× display running iOS ≥ 7: 120x120 -->';
 			}
-			if($this->web_url_exists($touch_icon_76)){
-				echo '<link rel="apple-touch-icon-precomposed" sizes="76x76" href="'.$touch_icon_76.'"><!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: 76x76 -->';
+			if( is_file($touch_icon_76) ){
+				echo '<link rel="apple-touch-icon-precomposed" sizes="76x76" href="'.$touch_icon_url_76.'"><!-- For the iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7: 76x76 -->';
 			}
-			if($this->web_url_exists($touch_icon_57)){
-				echo '<link rel="apple-touch-icon-precomposed" href="'.$touch_icon_57.'"><!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: 57×57px -->';
+			if( is_file($touch_icon_57) ){
+				echo '<link rel="apple-touch-icon-precomposed" href="'.$touch_icon_url_57.'"><!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: 57×57px -->';
 			}
 			// Microsoft Icons
-			if($this->web_url_exists($browserconfig)){
-				echo '<meta name="msapplication-config" content="'.$browserconfig.'" />';	
+			if( is_file($browserconfig) ){
+				echo '<meta name="msapplication-config" content="'.$browserconfig_url.'" />';	
 			}
 			// Favicon
-			if($this->web_url_exists($favicon_16)){
-				echo '<link rel=icon type="image/png" sizes=16x16 href="'.$favicon_16.'">';
+			if( is_file($favicon_16) ){
+				echo '<link rel=icon type="image/png" sizes=16x16 href="'.$favicon_url_16.'">';
 			}			
-			if($this->web_url_exists($favicon_32)){
-				echo '<link rel=icon type="image/png" sizes=32x32 href="'.$favicon_32.'">';
+			if( is_file($favicon_32) ){
+				echo '<link rel=icon type="image/png" sizes=32x32 href="'.$favicon_url_32.'">';
 			}			
-			if($this->web_url_exists($favicon_96)){
-				echo '<link rel=icon type="image/png" sizes=96x96 href="'.$favicon_96.'">';
+			if( is_file($favicon_96) ){
+				echo '<link rel=icon type="image/png" sizes=96x96 href="'.$favicon_url_96.'">';
 			}						
-			if($this->web_url_exists($favicon)){
-				echo '<link rel="shortcut icon" href="'.$favicon.'" />';
+			if( is_file($favicon) ){
+				echo '<link rel="shortcut icon" href="'.$favicon_url.'" />';
 			}
-
-//			if($this->web_url_exists($apple_pinned_tab)){
-//				echo '<link rel="mask-icon" href="website_icon.svg" color="white"><!-- Apple "pinned tab" icons -->';
-//			}
 			
 		} // END if !has_site_icon
 	}

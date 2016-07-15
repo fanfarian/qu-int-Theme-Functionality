@@ -165,6 +165,7 @@ class sr_theme_functionality {
 		$this->loader->add_action( 'post_thumbnail_html', 	$plugin_admin, 'image_tag_responsive', 10 );														// 11. Remove width and height in editor
 		$this->loader->add_action( 'image_send_to_editor', 	$plugin_admin, 'image_tag_responsive', 10 );														// 11. Remove width and height in editor
 	//	$this->loader->add_action( 'template_redirect', 	$plugin_admin, 'template_redirect', 999 );															// 12. Redirect Attachment Pages (mostly images) to their parent page
+
 	}
 
 	/**

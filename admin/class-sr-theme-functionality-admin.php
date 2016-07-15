@@ -53,24 +53,6 @@ class sr_theme_functionality_Admin {
 		$this->version = $version;
 
 	}
-	
-	/**
-	 * Check if an item exists out there in the "ether".
-	 *
-     * @since  1.0.0
-     * @access public
-	 * @param string $url - preferably a fully qualified URL
-	 * @return boolean - true if it is out there somewhere
-	 */
-	private function web_url_exists( $url ) {
-	    if (($url == '') || ($url == null)) { return false; }
-	    $response = wp_remote_head( $url, array( 'timeout' => 5 ) );
-	    $accepted_status_codes = array( 200, 301, 302 );
-	    if ( ! is_wp_error( $response ) && in_array( wp_remote_retrieve_response_code( $response ), $accepted_status_codes ) ) {
-	        return true;
-	    }
-	    return false;
-	}
 
 	
 	/**
@@ -190,14 +172,21 @@ class sr_theme_functionality_Admin {
      */
 	public function admin_styling() {
 		
-		$admin_css_path = get_stylesheet_directory_uri().'/css/admin.css';																						// Check in /css
-		$admin_css_path_srtheme = get_stylesheet_directory_uri().'/assets/css/admin.css';																		// Check in /assets/css
+		$stylesheet_directory_uri 	= get_stylesheet_directory_uri();																							// URL
+		$stylesheet_directory 		= get_stylesheet_directory();																								// File
 		
-		if($this->web_url_exists($admin_css_path)){
-			wp_enqueue_style( 'css-admin', $admin_css_path );																									// include css from /css
+		$admin_css_url 				= $stylesheet_directory_uri.'/css/admin.css';																				// URL Check in /css
+		$admin_css_path 			= $stylesheet_directory.'/css/admin.css';																					// File Check in /css
+
+		$admin_css_url_srtheme 		= $stylesheet_directory_uri.'/assets/css/admin.css';																		// URL Check in /assets/css
+		$admin_css_path_srtheme 	= $stylesheet_directory.'/assets/css/admin.css';																			// File Check in /assets/css
+
+		
+		if( is_file($admin_css_path) ){
+			wp_enqueue_style( 'css-admin', $admin_css_url );																									// include css from /css
 		}
-		elseif($this->web_url_exists($admin_css_path_srtheme)){
-			wp_enqueue_style( 'css-admin', $admin_css_path_srtheme );																							// include css from /assets/css
+		if( is_file($admin_css_path_srtheme) ){
+			wp_enqueue_style( 'css-admin', $admin_css_url_srtheme );																							// include css from /assets/css
 		}
 	}
 	
@@ -211,23 +200,33 @@ class sr_theme_functionality_Admin {
      */
 	public function admin_javascript() {
 		
-		$admin_js_min_path = get_stylesheet_directory_uri().'/js/admin.min.js';																					// Check in /js
-		$admin_js_min_path_srtheme = get_stylesheet_directory_uri().'/assets/js/admin.min.js';																	// Check in /assets/js
-
-		$admin_js_path = get_stylesheet_directory_uri().'/js/admin.js';																							// Check in /js
-		$admin_js_path_srtheme = get_stylesheet_directory_uri().'/assets/js/admin.js';																			// Check in /assets/js
+		$stylesheet_directory_uri 	= get_stylesheet_directory_uri();																							// URL
+		$stylesheet_directory 		= get_stylesheet_directory();																								// File
 		
-		if($this->web_url_exists($admin_js_min_path)){
-			wp_enqueue_script( 'js-admin',  $admin_js_min_path, array('jquery'), '1.2', true );																	// include .min from /js
+		$admin_js_min_url 			= $stylesheet_directory_uri.'/js/admin.min.js';																				// URL Check in /js
+		$admin_js_min_path 			= $stylesheet_directory.'/js/admin.min.js';																					// File Check in /js
+
+		$admin_js_min_url_srtheme 	= $stylesheet_directory_uri.'/assets/js/admin.min.js';																		// URL Check in /assets/js
+		$admin_js_min_path_srtheme 	= $stylesheet_directory.'/assets/js/admin.min.js';																			// File Check in /assets/js
+
+		$admin_js_url 				= $stylesheet_directory_uri.'/js/admin.js';																					// URL Check in /js
+		$admin_js_path 				= $stylesheet_directory.'/js/admin.js';																						// File Check in /js
+
+		$admin_js_url_srtheme		= $stylesheet_directory_uri.'/assets/js/admin.js';																			// URL Check in /assets/js
+		$admin_js_path_srtheme 		= $stylesheet_directory.'/assets/js/admin.js';																				// File Check in /assets/js
+
+		
+		if( is_file($admin_js_min_path) ){
+			wp_enqueue_script( 'js-admin',  $admin_js_min_url, array('jquery'), '1.2', true );																	// include .min from /js
 		}
-		elseif($this->web_url_exists($admin_js_min_path_srtheme)){
-			wp_enqueue_script( 'js-admin',  $admin_js_min_path_srtheme, array('jquery'), '1.2', true );															// include .min from /assets/js
+		elseif( is_file($admin_js_min_path_srtheme) ){
+			wp_enqueue_script( 'js-admin',  $admin_js_min_url_srtheme, array('jquery'), '1.2', true );															// include .min from /assets/js
 		}
-		elseif($this->web_url_exists($admin_js_path)){
-			wp_enqueue_script( 'js-admin',  $admin_js_path, array('jquery'), '1.2', true );																		// include .js from /js
+		elseif( is_file($admin_js_path) ){
+			wp_enqueue_script( 'js-admin',  $admin_js_url, array('jquery'), '1.2', true );																		// include .js from /js
 		}
-		elseif($this->web_url_exists($admin_js_path_srtheme)){
-			wp_enqueue_script( 'js-admin',  $admin_js_path_srtheme, array('jquery'), '1.2', true );																// include .js from /assets/js
+		elseif( is_file($admin_js_path_srtheme) ){
+			wp_enqueue_script( 'js-admin',  $admin_js_url_srtheme, array('jquery'), '1.2', true );																// include .js from /assets/js
 		}
 	}	
 	

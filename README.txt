@@ -3,8 +3,8 @@ Contributors: Stefan Reichert
 Donate link: http://stefan-reichert.com/
 Tags: theme functionality, add mime-types, resonsive videos, performance report, admin css, clean header, favicons
 Requires at least: 4.0
-Tested up to: 4.5
-Stable tag: 2.7.5
+Tested up to: 4.5.3
+Stable tag: 2.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,7 +121,7 @@ Checks if the following file exist in the (child) theme-folder
 * favicon.ico (16x16 + 32x32)
 * browserconfig.xml 
 
--> Options page planned in v3.0.0 for better controll where neccessary
+-> Options page planned in v3.0.0 for better control
 
 
 browserconfig.xml needs the following files in the (child) theme-folder
@@ -133,11 +133,11 @@ Also generates tags for application names on mobile
 * <meta name="application-name" content="'.get_bloginfo('name').'">'; 
 
 
-= 15. Removes invalid rel attribute values in the categorylist =
+= 15. Removes invalid rel attribute values in the category list =
 
 
 = 16. Add page slug to body class =
-Adds the current page slug to the body class
+Adds the current page slug to the body class for better css target
 
 
 = Website =
@@ -162,6 +162,10 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 1. No screenshots available
 
 == Changelog ==
+
+= 2.8.0 =
+Greatly improved performance with better existing file check for custom admin JS+CSS and favicons
+
 
 = 2.7.5 =
 Changed Favicon stuff in #14
