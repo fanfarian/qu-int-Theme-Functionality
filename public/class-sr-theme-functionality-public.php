@@ -283,7 +283,7 @@ class sr_theme_functionality_Public {
      * @return string
      */
 	public function remove_category_rel_from_category_list( $list ) {
-		return str_replace('rel="category tag"', 'rel="tag"', $list);
+		return str_replace( 'rel="category tag"', 'rel="tag"', $list );
 	}
 	
 	/**
@@ -293,21 +293,37 @@ class sr_theme_functionality_Public {
      * @access public
      * @return array
      */
-	public function add_slug_to_body_class($classes)
+	public function add_slug_to_body_class( $classes )
 	{
 	    global $post;
 	    if (is_home()) {
-	        $key = array_search('blog', $classes);
+	        $key = array_search( 'blog', $classes );
 	        if ($key > -1) {
 	            unset($classes[$key]);
 	        }
 	    } elseif (is_page()) {
-	        $classes[] = sanitize_html_class($post->post_name);
+	        $classes[] = sanitize_html_class( $post->post_name );
 	    } elseif (is_singular()) {
-	        $classes[] = sanitize_html_class($post->post_name);
+	        $classes[] = sanitize_html_class( $post->post_name );
 	    }
 	
 	    return $classes;
+	}
+	
+	
+	/**
+     * Add page slug to navigation class with prefix 'menu-item'
+     *
+     * @since  2.8.1
+     * @access public
+     * @return array
+     */
+	function add_slug_to_navigation_class( $classes, $item ) { 
+		if( 'page' == $item->object ){ 
+			$page = get_post( $item->object_id ); 
+			$classes[] = sanitize_html_class( 'menu-item-'.$page->post_name );
+		} 
+		return $classes; 
 	}
 
 	/**

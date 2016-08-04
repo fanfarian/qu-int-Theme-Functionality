@@ -1,10 +1,10 @@
 === Theme Functionality ===
 Contributors: Stefan Reichert
 Donate link: http://stefan-reichert.com/
-Tags: theme functionality, add mime-types, resonsive videos, performance report, admin css, clean header, favicons
-Requires at least: 4.0
+Tags: theme functionality, automatic favicons, additional mime-types, clean header,
+Requires at least: 4.2
 Tested up to: 4.5.3
-Stable tag: 2.8.0
+Stable tag: 2.8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Functionality plugin with important settings, enhancements and fixes for WordPre
 
 == Description ==
 
-= Featured Functions =
+= Functions =
 1. Allow upload of svg and font files
 2. Embed Video iframes responsively
 3. Remove admin bar
@@ -24,26 +24,26 @@ Functionality plugin with important settings, enhancements and fixes for WordPre
 9. Remove inline css style from gallery
 10. Clean the output of image css-classes in editor
 11. Remove width and height in editor
-12. Redirect Attachment Pages (mostly images) to their parent page
+12. (Deactivated) Redirect Attachment Pages (mostly images) to their parent page
 13. Remove WordPress generated content from the head
 14. Add various favicons and logos for iOS, Android, Windows
 15. Removes invalid rel attribute values in the categorylist
 16. Add page slug to body class
-
+17. Add page slug to corresponding navigation classes with prefix 'menu-item'
 
 
 = 1. Allow upload of svg and font files =
 Add mime types for 'svg', 'ttf', 'otf', 'woff', 'woff2', 'eot' to media uploader
 
 
-= 2. Embed Video iframes responsively = 
+= 2. Embed Video iframes responsively =
 Add oEmbedded class for responsive iFrame Videos from Youtube/Vimeo.
 You need to add custom css for .embed-container from http://embedresponsively.com/
-.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } 
+.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; }
 .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
 
-= 3. Remove admin bar = 
+= 3. Remove admin bar =
 Removes the Admin bar on front end for users without role 'edit_posts'
 
 
@@ -52,8 +52,8 @@ Remove 'Comment' navigation link for users without role 'moderate_comments'
 Remove 'Tools' navigation link for users without role 'manage_options'
 
 
-= 5. Update notification for Administrators = 
-Show update notification only to admins to prevent user confusion 
+= 5. Update notification for Administrators =
+Show update notification only to admins to prevent user confusion
 
 
 = 6. Quick Performance Report =
@@ -72,7 +72,7 @@ Checks if file exists in 'theme-folder/js/admin.min.js' and enqueues file automa
 You need to style your gallery through your own css files
 
 
-= 10. Clean the output of image css-classes in editor = 
+= 10. Clean the output of image css-classes in editor =
 Better align classes: alignright, alignleft, aligncenter
 
 
@@ -97,7 +97,7 @@ Only if parent is available
 * Canonical links
 * Clean up comment styles in the head
 * Remove WordPress version
-* Remove comment cookie 
+* Remove comment cookie
 * Remove WordPress version from RSS feeds
 * Remove WordPress version from CSS + JS
 * Remove injected css for recent comments widget
@@ -109,7 +109,7 @@ Only if parent is available
 -> Options page planned in v3.0.0 to decide which content is removed
 
 
-= 14. Add various favicons and logos = 
+= 14. Add various favicons and logos =
 NEW: Check if WordPress-Core function 'has_site_icon()' is supported
 Checks if the following file exist in the (child) theme-folder
 * apple-touch-icon.png (192x192)
@@ -119,7 +119,7 @@ Checks if the following file exist in the (child) theme-folder
 * apple-touch-icon-76x76-precomposed.png (76x76)
 * apple-touch-icon-precomposed.png (57x57)
 * favicon.ico (16x16 + 32x32)
-* browserconfig.xml 
+* browserconfig.xml
 
 -> Options page planned in v3.0.0 for better control
 
@@ -130,7 +130,7 @@ browserconfig.xml needs the following files in the (child) theme-folder
 
 Also generates tags for application names on mobile
 * <meta name="apple-mobile-web-app-title" content="'.get_bloginfo('name').'">
-* <meta name="application-name" content="'.get_bloginfo('name').'">'; 
+* <meta name="application-name" content="'.get_bloginfo('name').'">';
 
 
 = 15. Removes invalid rel attribute values in the category list =
@@ -163,13 +163,15 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 
 == Changelog ==
 
+= 2.8.1 =
+New Feature:  Add page slug to corresponding navigation classes with prefix 'menu-item'
+
 = 2.8.0 =
 Greatly improved performance with better existing file check for custom admin JS+CSS and favicons
 
-
 = 2.7.5 =
-Changed Favicon stuff in #14
-* Change filename for 192x192 size from 'touch-icon-192x192.png' to 'apple-touch-icon.png' 
+Changed Favicon stuff
+* Change filename for 192x192 size from 'touch-icon-192x192.png' to 'apple-touch-icon.png'
 * New PNG Favicons 16x16, 32x32, 96x96
 
 = 2.7.4 =
@@ -179,10 +181,10 @@ Update 'plugin-update-checker'
 Remove wp-embedded.min.js from footer
 
 = 2.7.2 =
-Small bugfixes with embedded images 
+Small bugfixes with embedded images
 
 = 2.7.1 =
-Small bugfix with oEmbedd feature 
+Small bugfix with oEmbedd feature
 
 = 2.7.0 =
 Check if WordPress-Core function 'has_site_icon()' is supported and use this function.
@@ -198,7 +200,7 @@ Alternative, flexible and better update script for the plugin
 * YahnisElsts (https://github.com/YahnisElsts/plugin-update-checker)
 
 = 2.4.0 =
-Automatically update the plugin from GitHub with new updater script based on 
+Automatically update the plugin from GitHub with new updater script based on
 * Smashing Magazin (http://www.smashingmagazine.com/2015/08/deploy-wordpress-plugins-with-github-using-transients/)
 
 = 2.3.0 =
