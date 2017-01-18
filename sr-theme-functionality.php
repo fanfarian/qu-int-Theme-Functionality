@@ -1,13 +1,6 @@
 <?php
 
 /**
- * The plugin bootstrap file
- *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
- *
  * @link              http://stefan-reichert.com
  * @since             1.0.0
  * @package           sr_theme_functionality
@@ -16,7 +9,7 @@
  * Plugin Name:       Theme Functionality
  * Plugin URI:        https://github.com/fanfarian/sr-theme-functionality
  * Description:       Functionality plugin with important settings, enhancements and fixes for WordPress themes
- * Version:           2.8.2
+ * Version:           2.8.3
  * Author:            Stefan Reichert
  * Author URI:        http://stefan-reichert.com
  * License:           GPL-2.0+
@@ -84,13 +77,12 @@ function run_sr_theme_functionality() {
 	/**
 	 * Check for updates
 	 */
-	$className = PucFactory::getLatestClassVersion('PucGitHubChecker');
-	$myUpdateChecker = new $className(
-	    'https://github.com/fanfarian/sr-theme-functionality/',
-	    __FILE__,
-	    'master'
+	 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+		'https://github.com/user-name/repo-name/',
+		__FILE__,
+		'sr-theme-functionality'
 	);
-
+	
 	$plugin = new sr_theme_functionality();
 	$plugin->run();
 

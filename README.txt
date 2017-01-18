@@ -2,9 +2,9 @@
 Contributors: Stefan Reichert
 Donate link: http://stefan-reichert.com/
 Tags: theme functionality, automatic favicons, additional mime-types, clean header,
-Requires at least: 4.2
-Tested up to: 4.6
-Stable tag: 2.8.2
+Requires at least: 4.4
+Tested up to: 4.7
+Stable tag: 2.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -163,11 +163,16 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 
 == Changelog ==
 
+= 2.8.3 =
+Updates the update script to v4
+* YahnisElsts (https://github.com/YahnisElsts/plugin-update-checker)
+Updates Required/Tested versions: 4.4 - 4.7
+
 = 2.8.2 =
 Compatibility with WordPress 4.6
 
 = 2.8.1 =
-New Feature:  Add page slug to corresponding navigation classes with prefix 'menu-item'
+New Feature: Add page slug to corresponding navigation classes with prefix 'menu-item'
 
 = 2.8.0 =
 Greatly improved performance with better existing file check for custom admin JS+CSS and favicons
