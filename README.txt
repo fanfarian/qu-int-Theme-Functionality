@@ -163,6 +163,9 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 
 == Changelog ==
 
+= 2.8.5 =
+Use correct github url (Do not just copy-paste without thinking)
+
 = 2.8.4 =
 Test the new update script v4
 
