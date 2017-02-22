@@ -4,7 +4,7 @@ Donate link: http://stefan-reichert.com/
 Tags: theme functionality, automatic favicons, additional mime-types, clean header,
 Requires at least: 4.4
 Tested up to: 4.7
-Stable tag: 2.8.4
+Stable tag: 2.8.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -162,6 +162,10 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 1. No screenshots available
 
 == Changelog ==
+
+= 2.8.6 =
+Add prefix 'page-slug-' to page slug for body class (added in 2.6.0)
+Added a plugin icon
 
 = 2.8.5 =
 Use correct github url (Do not just copy-paste without thinking)
