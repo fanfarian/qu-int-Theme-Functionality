@@ -302,9 +302,9 @@ class sr_theme_functionality_Public {
 	            unset($classes[$key]);
 	        }
 	    } elseif (is_page()) {
-	        $classes[] = sanitize_html_class( $post->post_name );
+	        $classes[] = sanitize_html_class( 'page-slug-'.$post->post_name );
 	    } elseif (is_singular()) {
-	        $classes[] = sanitize_html_class( $post->post_name );
+	        $classes[] = sanitize_html_class( 'page-slug-'.$post->post_name );
 	    }
 	
 	    return $classes;
