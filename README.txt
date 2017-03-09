@@ -28,8 +28,8 @@ Functionality plugin with important settings, enhancements and fixes for WordPre
 13. Remove WordPress generated content from the head
 14. Add various favicons and logos for iOS, Android, Windows
 15. Removes invalid rel attribute values in the categorylist
-16. Add page slug to body class
-17. Add page slug to corresponding navigation classes with prefix 'menu-item'
+16. Add page slug to body class with prefix 'page-slug-'
+17. Add page slug to corresponding navigation classes with prefix 'menu-item-'
 
 
 = 1. Allow upload of svg and font files =
@@ -137,7 +137,12 @@ Also generates tags for application names on mobile
 
 
 = 16. Add page slug to body class =
-Adds the current page slug to the body class for better css target
+Add the current page slug to the body class for better css target with prefix 'page-slug-'
+
+
+= 17. Add page slug navigation 
+Add page slug to corresponding navigation classes with prefix 'menu-item-'
+
 
 
 = Website =
@@ -166,6 +171,7 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 = 2.8.6 =
 Add prefix 'page-slug-' to page slug for body class (added in 2.6.0)
 Added a plugin icon
+Test: Freemius Plugin Analytics
 
 = 2.8.5 =
 Use correct github url (Do not just copy-paste without thinking)
