@@ -69,7 +69,7 @@ class sr_theme_functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'sr-theme-functionality';
-		$this->version = '1.0.0';
+		$this->version = '2.8.7';
 
 		$this->load_dependencies();
 		$this->set_locale();
