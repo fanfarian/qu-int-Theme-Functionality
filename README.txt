@@ -4,7 +4,7 @@ Donate link: http://stefan-reichert.com/
 Tags: theme functionality, automatic favicons, additional mime-types, clean header,
 Requires at least: 4.4
 Tested up to: 4.7
-Stable tag: 2.8.6
+Stable tag: 2.8.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,27 +110,33 @@ Only if parent is available
 
 
 = 14. Add various favicons and logos =
-NEW: Check if WordPress-Core function 'has_site_icon()' is supported
+Checks if WordPress-Core function 'has_site_icon()' is supported
 Checks if the following file exist in the (child) theme-folder
-* apple-touch-icon.png (192x192)
+* apple-touch-icon.png (180x180)
 * apple-touch-icon-180x180-precomposed.png (180x180)
 * apple-touch-icon-152x152-precomposed.png (152x152)
 * apple-touch-icon-120x120-precomposed.png (120x120)
 * apple-touch-icon-76x76-precomposed.png (76x76)
 * apple-touch-icon-precomposed.png (57x57)
-* favicon.ico (16x16 + 32x32)
-* browserconfig.xml
-
--> Options page planned in v3.0.0 for better control
-
-
-browserconfig.xml needs the following files in the (child) theme-folder
-* tile.png (558x558)
-* tile-wide.png (558x270)
+* favicon.ico (16x16 + 32x32 + 48x48)
+* browserconfig.xml for MS tile-icons (needs the file(s) in the (child) theme-folder with relative path from root: /wp-content/themes/...)
+* manifest.json for android-chrome icons (needs the file(s) in the (child) theme-folder with relative path from root: /wp-content/themes/...)
 
 Also generates tags for application names on mobile
 * <meta name="apple-mobile-web-app-title" content="'.get_bloginfo('name').'">
 * <meta name="application-name" content="'.get_bloginfo('name').'">';
+
+Generate icons through http://realfavicongenerator.net/
+You don't need the precomposed files, all is resized in iOS and Android
+
+Redirect the root requests for /favion.ico and /favicon.png to your child theme
+Swap CHILDTHEME with your child name and place BEFORE the Wordpress rewrites
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} !^/wp-content/themes/CHILDTHEME/favicon\.ico$ [NC]
+    RewriteCond %{HTTP_HOST} (.+)
+    RewriteRule ^(.*)favicon\.(ico|png)$ http://%1/wp-content/themes/CHILDTHEME/favicon.ico [R=301,L,NC]
+</IfModule>
 
 
 = 15. Removes invalid rel attribute values in the category list =
@@ -140,7 +146,7 @@ Also generates tags for application names on mobile
 Add the current page slug to the body class for better css target with prefix 'page-slug-'
 
 
-= 17. Add page slug navigation 
+= 17. Add page slug navigation
 Add page slug to corresponding navigation classes with prefix 'menu-item-'
 
 
@@ -168,13 +174,17 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 
 == Changelog ==
 
+= 2.8.7 =
+Update for loading favicons & touch icons -> less is more: http://realfavicongenerator.net/blog/new-favicon-package-less-is-more/
+Use http://realfavicongenerator.net to update your files and look for instructiuons in #14
+
 = 2.8.6 =
 Add prefix 'page-slug-' to page slug for body class (added in 2.6.0)
 Added a plugin icon
 Test: Freemius Plugin Analytics
 
 = 2.8.5 =
-Use correct github url (Do not just copy-paste without thinking)
+Use correct github url (do not just copy-paste without thinking)
 
 = 2.8.4 =
 Test the new update script v4
