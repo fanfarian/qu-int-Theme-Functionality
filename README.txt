@@ -174,6 +174,9 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 
 == Changelog ==
 
+= 2.8.9 =
+Removed: Freemius Plugin Analytics
+
 = 2.8.7 =
 Update for loading favicons & touch icons -> less is more: http://realfavicongenerator.net/blog/new-favicon-package-less-is-more/
 Use http://realfavicongenerator.net to update your files and look for instructiuons in #14
