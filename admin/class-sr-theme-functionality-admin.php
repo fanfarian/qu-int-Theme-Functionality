@@ -70,6 +70,7 @@ class sr_theme_functionality_Admin {
 		$mimes['woff'] 	= 'font/woff';
 		$mimes['woff2'] = 'font/woff2';
 		$mimes['eot'] 	= 'font/eot';
+		
 		return $mimes;
 	}
 
@@ -84,11 +85,17 @@ class sr_theme_functionality_Admin {
      * @access public
      * @return void
      */
+
 	public function oembed_filter( $html ) {
-	    $html = preg_replace('# src="https://www\.youtube\.com([^"]*)"#', ' src="https://www.youtube-nocookie.com\\1&rel=0&modestbranding=1"', $html);
-	
-	    $return = '<div class="embed-container">'.$html.'</div>';
-	    return $return;
+	   $html = preg_replace('# src="https://www\.youtube\.com([^"]*)"#', ' src="https://www.youtube-nocookie.com\\1&rel=0&modestbranding=1"', $html);
+
+		if (strpos($html, 'twitter-tweet') !== false) {
+		   $return = '<div class="embed-container embed-container__twitter">'.$html.'</div>';
+		}
+		else
+		   $return = '<div class="embed-container">'.$html.'</div>';
+
+	   return $return;
 	}
 	
 	/**
@@ -120,7 +127,7 @@ class sr_theme_functionality_Admin {
 	    global $submenu;
 		    
 	    if (!current_user_can('moderate_comments')) {
-	    	remove_menu_page('edit-comments.php'); 																												// Remove the comments menu
+	   	 	remove_menu_page('edit-comments.php'); 																												// Remove the comments menu
 		}
 	    if (!current_user_can('manage_options')) {
 			remove_menu_page('tools.php'); 																														// Remove the tools menu

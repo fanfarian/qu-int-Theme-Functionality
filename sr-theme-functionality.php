@@ -9,7 +9,7 @@
  * Plugin Name:       Theme Functionality
  * Plugin URI:        https://github.com/fanfarian/sr-theme-functionality
  * Description:       Functionality plugin with important settings, enhancements and fixes for WordPress themes
- * Version:           2.8.7
+ * Version:           2.8.10
  * Author:            Stefan Reichert
  * Author URI:        http://stefan-reichert.com
  * License:           GPL-2.0+
@@ -22,39 +22,6 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
-
-// Create a helper function for easy SDK access.
-function sr_tf() {
-    global $sr_tf;
-
-    if ( ! isset( $sr_tf ) ) {
-        // Include Freemius SDK.
-        require_once dirname(__FILE__) . '/freemius/start.php';
-
-        $sr_tf = fs_dynamic_init( array(
-            'id'                  => '802',
-            'slug'                => 'sr-theme-functionality',
-            'type'                => 'plugin',
-            'public_key'          => 'pk_73cd62f8c86eac953b053dec014d5',
-            'is_premium'          => false,
-            'has_premium_version' => false,
-            'has_addons'          => false,
-            'has_paid_plans'      => false,
-            'is_org_compliant'    => false,
-            'menu'                => array(
-                'first-path'     => 'plugins.php',
-                'account'        => false,
-                'contact'        => false,
-                'support'        => false,
-            ),
-        ) );
-    }
-
-    return $sr_tf;
-}
-
-// Init Freemius.
-sr_tf();
 
 
 /**
