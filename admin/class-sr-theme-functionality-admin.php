@@ -87,16 +87,19 @@ class sr_theme_functionality_Admin {
      */
 
 	public function oembed_filter( $html ) {
-	   $html = preg_replace('# src="https://www\.youtube\.com([^"]*)"#', ' src="https://www.youtube-nocookie.com\\1&rel=0&modestbranding=1"', $html);
+
+		$html = preg_replace('# src="https://www\.youtube\.com([^"]*)"#', ' src="https://www.youtube-nocookie.com\\1&rel=0&modestbranding=1"', $html);
 
 		if (strpos($html, 'twitter-tweet') !== false) {
-		   $return = '<div class="embed-container embed-container__twitter">'.$html.'</div>';
+			$return_html = '<div class="embed-container embed-container__twitter">'.$html.'</div>';
 		}
 		else
-		   $return = '<div class="embed-container">'.$html.'</div>';
+			$return_html = '<div class="embed-container">'.$html.'</div>';
 
-	   return $return;
+		return $return_html;
+
 	}
+
 	
 	/**
 	 * 3. Remove admin bar 
