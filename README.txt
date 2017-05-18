@@ -4,7 +4,7 @@ Donate link: http://stefan-reichert.com/
 Tags: theme functionality, automatic favicons, additional mime-types, clean header,
 Requires at least: 4.4
 Tested up to: 4.7
-Stable tag: 2.8.7
+Stable tag: 2.8.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,11 +37,13 @@ Add mime types for 'svg', 'ttf', 'otf', 'woff', 'woff2', 'eot' to media uploader
 
 
 = 2. Embed Video iframes responsively =
-Add oEmbedded class for responsive iFrame Videos from Youtube/Vimeo.
+Add oEmbedded class for responsive iFrame Videos from Youtube/Vimeo and Twitter
+Twitter gets additional class 'embed-container__twitter' for smaller padding-bottom
+
 You need to add custom css for .embed-container from http://embedresponsively.com/
 .embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; }
 .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
+.embed-container__twitter { padding-bottom: 30%; }
 
 = 3. Remove admin bar =
 Removes the Admin bar on front end for users without role 'edit_posts'
@@ -173,6 +175,9 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 1. No screenshots available
 
 == Changelog ==
+
+= 2.8.10 =
+New css-class for Twitter embedds 'embed-container__twitter' for smaller padding-bottom
 
 = 2.8.9 =
 Removed: Freemius Plugin Analytics
