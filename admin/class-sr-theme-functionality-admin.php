@@ -186,17 +186,17 @@ class sr_theme_functionality_Admin {
 		$stylesheet_directory 		= get_stylesheet_directory();																								// File
 		
 		$admin_css_url 				= $stylesheet_directory_uri.'/css/admin.css';																				// URL Check in /css
-		$admin_css_path 			= $stylesheet_directory.'/css/admin.css';																					// File Check in /css
+		$admin_css_path 				= $stylesheet_directory.'/css/admin.css';																					// File Check in /css
 
-		$admin_css_url_srtheme 		= $stylesheet_directory_uri.'/assets/css/admin.css';																		// URL Check in /assets/css
-		$admin_css_path_srtheme 	= $stylesheet_directory.'/assets/css/admin.css';																			// File Check in /assets/css
+		$admin_css_url_srtheme 		= $stylesheet_directory_uri.'/assets/css/admin.css';																			// URL Check in /assets/css
+		$admin_css_path_srtheme 		= $stylesheet_directory.'/assets/css/admin.css';																				// File Check in /assets/css
 
 		
 		if( is_file($admin_css_path) ){
-			wp_enqueue_style( 'css-admin', $admin_css_url );																									// include css from /css
+			wp_enqueue_style( 'css-admin', $admin_css_url );																										// include css from /css
 		}
 		if( is_file($admin_css_path_srtheme) ){
-			wp_enqueue_style( 'css-admin', $admin_css_url_srtheme );																							// include css from /assets/css
+			wp_enqueue_style( 'css-admin', $admin_css_url_srtheme );																								// include css from /assets/css
 		}
 	}
 	
@@ -268,7 +268,6 @@ class sr_theme_functionality_Admin {
 	
 	/**
      * 11. Remove width and height in editor, for a better responsive world. 
-     * Also sets 'alt' = 'titel' if no alt tag provided for the image
      *
      * @since  2.2.0
      * @access public
@@ -299,7 +298,6 @@ class sr_theme_functionality_Admin {
 	            exit;
 	        }
 	
-			// $wp_query->set_404();
 	        return;
 	    }
 	}
