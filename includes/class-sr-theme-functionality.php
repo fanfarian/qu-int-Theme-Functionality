@@ -69,7 +69,7 @@ class sr_theme_functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'sr-theme-functionality';
-		$this->version = '2.8.7';
+		$this->version = '2.8.12';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -153,18 +153,18 @@ class sr_theme_functionality {
 		$plugin_admin = new sr_theme_functionality_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'upload_mimes', 			$plugin_admin, 'add_mimes' );																		// 1. Allow upload of svg and font files
-		$this->loader->add_action( 'embed_oembed_html', 	$plugin_admin, 'oembed_filter' );																	// 2. Embed Video iframes responsively
-		$this->loader->add_action( 'set_current_user', 		$plugin_admin, 'remove_admin_bar' );																// 3. Remove admin bar
-		$this->loader->add_action( 'admin_menu', 			$plugin_admin, 'remove_menus' );																	// 4. Remove admin navigation items
-		$this->loader->add_action( 'admin_notices', 		$plugin_admin, 'hide_update_notice', 1 );															// 5. Update notification for Administrators
-		$this->loader->add_action( 'wp_footer', 			$plugin_admin, 'footer_performance' );																// 6. Quick Performance Report
+		$this->loader->add_action( 'embed_oembed_html', 		$plugin_admin, 'oembed_filter' );																	// 2. Embed Video iframes responsively
+		$this->loader->add_action( 'set_current_user', 		$plugin_admin, 'remove_admin_bar' );																	// 3. Remove admin bar
+		$this->loader->add_action( 'admin_menu', 			$plugin_admin, 'remove_menus' );																		// 4. Remove admin navigation items
+		$this->loader->add_action( 'admin_notices', 			$plugin_admin, 'hide_update_notice', 1 );															// 5. Update notification for Administrators
+		$this->loader->add_action( 'wp_footer', 				$plugin_admin, 'footer_performance' );																// 6. Quick Performance Report
 		$this->loader->add_action( 'admin_init', 			$plugin_admin, 'admin_styling' );																	// 7. Add custom CSS for Administrators
-		$this->loader->add_action( 'admin_init', 			$plugin_admin, 'admin_javascript' );																// 8. Add custom JS for Administrators
-		$this->loader->add_action( 'gallery_style', 		$plugin_admin, 'gallery_style' );																	// 9. Remove inline css style from gallery
-		$this->loader->add_filter( 'get_image_tag_class', 	$plugin_admin, 'image_tag_align_class', 10, 4 );													// 10. Clean the output of attributes of images in editor
-		$this->loader->add_action( 'post_thumbnail_html', 	$plugin_admin, 'image_tag_responsive', 10 );														// 11. Remove width and height in editor
-		$this->loader->add_action( 'image_send_to_editor', 	$plugin_admin, 'image_tag_responsive', 10 );														// 11. Remove width and height in editor
-	//	$this->loader->add_action( 'template_redirect', 	$plugin_admin, 'template_redirect', 999 );															// 12. Redirect Attachment Pages (mostly images) to their parent page
+		$this->loader->add_action( 'admin_init', 			$plugin_admin, 'admin_javascript' );																	// 8. Add custom JS for Administrators
+		$this->loader->add_action( 'gallery_style', 			$plugin_admin, 'gallery_style' );																	// 9. Remove inline css style from gallery
+		$this->loader->add_filter( 'get_image_tag_class', 	$plugin_admin, 'image_tag_align_class', 10, 4 );														// 10. Clean the output of attributes of images in editor
+		$this->loader->add_action( 'post_thumbnail_html', 	$plugin_admin, 'image_tag_responsive', 10 );															// 11. Remove width and height in editor
+		$this->loader->add_action( 'image_send_to_editor', 	$plugin_admin, 'image_tag_responsive', 10 );															// 11. Remove width and height in editor
+	//	$this->loader->add_action( 'template_redirect', 	$plugin_admin, 'template_redirect', 999 );																// 12. Redirect Attachment Pages (mostly images) to their parent page
 
 	}
 
@@ -179,10 +179,10 @@ class sr_theme_functionality {
 
 		$plugin_public = new sr_theme_functionality_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'init', $plugin_public, 'clean_up' );																						// 13. Remove WP generated content from the head/footer
+		$this->loader->add_action( 'init', $plugin_public, 'clean_up' );																							// 13. Remove WP generated content from the head/footer
 		$this->loader->add_action( 'wp_head', $plugin_public, 'meta_icons' );																					// 14. Add various favicons and logos for iOS, Android, Windows
 		$this->loader->add_action( 'the_category', $plugin_public, 'remove_category_rel_from_category_list' );													// 15. Removes invalid rel attribute values in the categorylist
-		$this->loader->add_action( 'body_class', $plugin_public, 'add_slug_to_body_class' );																	// 16. Add page slug to body class
+		$this->loader->add_action( 'body_class', $plugin_public, 'add_slug_to_body_class' );																		// 16. Add page slug to body class
 		$this->loader->add_action( 'nav_menu_css_class', $plugin_public, 'add_slug_to_navigation_class', 10, 2 );												// 17. Add page slug to navigation class with prefix 'menu-item'
 		
 	}

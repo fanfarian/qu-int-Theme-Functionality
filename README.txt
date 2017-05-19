@@ -4,7 +4,7 @@ Donate link: http://stefan-reichert.com/
 Tags: theme functionality, automatic favicons, additional mime-types, clean header,
 Requires at least: 4.4
 Tested up to: 4.7
-Stable tag: 2.8.10
+Stable tag: 2.8.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -175,6 +175,12 @@ A. Please create an issue on GitHub: https://github.com/fanfarian/sr-theme-funct
 1. No screenshots available
 
 == Changelog ==
+
+= 2.8.12 =
+Small bugfixes
+
+= 2.8.11 =
+Weird invisible character bugfix
 
 = 2.8.10 =
 New css-class for Twitter embedds 'embed-container__twitter' for smaller padding-bottom
