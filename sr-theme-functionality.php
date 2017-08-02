@@ -12,8 +12,8 @@
  * Version:           2.8.12
  * Author:            Stefan Reichert
  * Author URI:        http://stefan-reichert.com
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License:           GNU General Public License v3.0
+ * License URI:       http://www.gnu.org/licenses/gpl-3.0
  * Text Domain:       sr-theme-functionality
  * Domain Path:       /languages
  */
