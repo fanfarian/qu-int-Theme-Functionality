@@ -76,8 +76,6 @@ function run_sr_theme_functionality() {
 		__FILE__,
 		'sr-theme-functionality'
 	);
-	$myUpdateChecker->setAuthentication('7577714875e55802c9d4eec1d370d4ee0490ed44');
-
 	
 	$plugin = new sr_theme_functionality();
 	$plugin->run();
